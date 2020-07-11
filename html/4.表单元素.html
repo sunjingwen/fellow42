@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单元素</title>
+    <style>
+        div {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 表单控件： -->
+    <!-- get -->
+    <!-- post -->
+    <form action="">
+        <div>
+            <label for="name">姓名：</label>
+            <input id="name" type="text" name="name" id="">
+        </div>
+
+        <div>
+            <label for="sex">性别：</label>
+            男<input type="radio" name="sex" value="male" id="sex">
+            女<input type="radio" name="sex" value="female" id="sex">
+        </div>
+
+        <div>
+            <label for="hobby">爱好:</label>
+            吃饭<input type="checkbox" name="hobby" value="吃饭" id="hobby">
+            睡觉<input type="checkbox" name="hobby" value="睡觉" id="hobby">
+            打游戏<input type="checkbox" name="hobby" value="打游戏" id="hobby">
+        </div>
+
+        <div>
+            <label for="pwd">密码：</label>
+            <input type="password" name="pwd" id="pwd">
+        </div>
+
+        <div>
+            <input type="file" name="" id="">
+        </div>
+
+        <div>
+            <label for="age">年龄:</label>
+            <select name="age" id="">
+                <option value="10岁以下">10岁以下</option>
+                <option value="10-15">10-15</option>
+                <option value="15-20">15-20</option>
+            </select>
+        </div>
+
+        <div>
+            <textarea name="description" id="" cols="30" rows="10"></textarea>
+        </div>
+
+        <!-- html5 -->
+
+        <div>
+            邮箱<input type="email" name="email" id="">
+        </div>
+
+        <div>
+            网址<input type="url" name="url" id="">
+        </div>
+
+        <div>
+            数量<input type="number" min="1" max="10" name="num" id="">
+            <br>
+            <input type="range" name="range" min="1" max="10"  id="">
+        </div>
+
+        <div>
+            日期：<input type="date" name="date" id="">
+        </div>
+
+        <div>
+            <button>按钮</button>
+            <input type="button" value="这是一个按钮">
+            <input type="reset" value="重置">
+            <input type="submit" value="提交" name="" id="">
+        </div>
+
+    </form>
+
+</body>
+
+</html>

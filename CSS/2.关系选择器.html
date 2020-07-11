@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关系选择器</title>
+    <style>
+        /* 后代选择器 */
+        #box p {
+            background: steelblue;
+        }
+
+        /* 子代选择器 */
+        #box>p {
+            border: tan 5px dotted;
+        }
+
+        /* 兄弟选择器 */
+        #box~p {
+            color: thistle;
+        }
+
+        /* 相邻选择器 */
+        #box+p {
+            border: solid 2px blueviolet;
+        }
+
+        /* 属性选择器 */
+        input[id] {
+            background: chartreuse;
+        }
+        input[name="age"] {
+            background: rosybrown;
+        }
+    </style>
+</head>
+
+<body>
+    <p>11</p>
+    <div id="box">
+        <div>
+            <p>31</p>
+            <p>32</p>
+        </div>
+        <p>21</p>
+        <p>22</p>
+    </div>
+    <p>11</p>
+    <p>12</p>
+    <h1>h1</h1>
+    <h2>h2</h2>
+
+
+    <input type="text" name="age">
+    <input type="text" name="" id="">
+    <input type="text" name="">
+
+
+</body>
+
+</html>
