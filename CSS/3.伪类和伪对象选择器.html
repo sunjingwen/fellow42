@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪类和伪对象选择器</title>
+    <style>
+        #box1 {
+            width: 500px;
+            height: 600px;
+            border: solid;
+        }
+
+        /* 伪类选择器 */
+        #box1 li:hover {
+            background: silver;
+        }
+
+        /* #box1 后代中每一代的所有元素中的最后一个 */
+        #box1 :last-child {
+            /* border-bottom: 5px solid #000; */
+        }
+
+        /* #box1亲儿子中的最后一个 */
+        #box1>:last-child {
+            /* border-bottom: 5px solid #000; */
+        }
+
+        /*  #box1下面的 每一代中的li的最后一个 */
+        #box1 li:first-child {
+            /* border-bottom: 5px solid #000; */
+        }
+
+        #box1 :nth-child(2n) {
+            /* border-bottom: 5px solid #000; */
+        }
+
+        /* 没有匹配到元素 */
+        /* 选中每一代中第二个孩子，但是第二个孩子不是p所以无法匹配 */
+        #box1 p:nth-child(2) {
+            /* border-bottom: 5px solid #000; */
+        }
+
+        /* #box 每一代中每一种标签的第1个 */
+        #box1 :nth-of-type(1) {
+            /* border-bottom: 5px solid #000; */
+        }
+
+        /*  #box 每一代中p标签的第2个 */
+        #box1 p:nth-of-type(2) {
+            /* border-bottom: 5px solid #000; */
+        }
+
+        /* 伪对象(元素)选择器 */
+        /*  */
+        #box1>p::after{
+            content: '❤️';
+        }
+        #box1>h1:hover:before{
+            content: '666';
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <p>我有一个小猫咪</p>
+        <ul>
+            <li>1
+                <ul>
+                    <li>1.1</li>
+                    <li>1.2</li>
+                </ul>
+                <ul>
+                    <li>2.1</li>
+                </ul>
+            </li>
+
+            <li>2</li>
+            <li>3</li>
+            <p>ppppppp2</p>
+        </ul>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <p>p1</p>
+        <p>p2</p>
+        <h1>h11</h1>
+        <h1>h12</h1>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优先级与继承</title>
+    <!-- <link rel="stylesheet" href="../html/style.css"> -->
+    <style>
+        /* 优先级 */
+
+        /* 权重值不同：权重值高的胜出 */
+        /* 权重值计算 */
+        /* 1、!important，加在样式属性值后，权重值为 10000
+            2、内联样式，如：style=””，权重值为1000
+            3、ID选择器，如：#content，权重值为100
+            4、类，伪类和属性选择器，如： content、:hover 权重值为10
+            5、标签选择器和伪元素选择器，如：div、p、:before 权重值为1
+            6、通用选择器（*）、子选择器（>）、相邻选择器（+）、同胞选择器（~）、权重值为0 
+            [注释]不允许进位
+        */
+
+        h1 {
+            color: skyblue ;
+        }
+
+        #mimi {
+            /* color: slateblue; */
+        }
+
+        .cat {
+            /* color: tomato; */
+        }
+
+        body h1 {
+            /* color: teal; */
+        }
+
+        /* 在权重值相同：下面的覆盖上面的 */
+
+        h1 {
+            color: red;
+        }
+        /* 优先级由低-高 */
+        /* 
+            1、用户代理样式表中的声明(例如，浏览器的默认样式，在没有设置其他样式时使用)。
+            2、用户样式表中的常规声明(由用户设置的自定义样式)。
+            3、作者样式表中的常规声明(这些是我们web开发人员设置的样式)。
+            4、作者样式表中的!important声明
+            5、用户样式表中的!important 声明
+            有些会继承有些不会（color，font-family）
+        */
+
+        /* 继承 */
+        /* 不是所有的属性都能够被继承 */
+        body {
+            color: saddlebrown;
+            border: solid;
+        }
+
+        /* 控制继承 */
+        ul{
+            all:inherit;
+        }
+
+        .my-class-1 a {
+            /* 继承父元素的样式 */
+            color: inherit;
+        }
+
+        .my-class-2 a {
+            /* 使用浏览器默认的样式 */
+            /* 关于该属性的默认样式 */
+            color: initial;
+        }
+
+        .my-class-3 a {
+            /* 使用样式继承规则的默认值（这个样式本来就会被继承的话【inherit】，这个样式本来就不会被继承【initial】） */
+            color: unset;
+            border: unset;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="mimi" class="cat">今天天气很晴朗,咪咪很开心</h1>
+    <p>我是真的爱学习，下课一定动手做练习</p>
+
+    <ul>
+        <li>Default <a href="#">link</a> color</li>
+        <li class="my-class-1">Inherit the <a href="#">link</a> color</li>
+        <li class="my-class-2">Reset the <a href="#">link</a> color</li>
+        <li class="my-class-3">Unset the <a href="#">link</a> color</li>
+    </ul>
+
+</body>
+
+</html>

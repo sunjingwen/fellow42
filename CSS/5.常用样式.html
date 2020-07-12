@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用样式</title>
+    <style>
+        body {
+            width: 1200px;
+            height: 1200px;
+            border: solid;
+            font-size: 16px;
+        }
+
+        /* 颜色 */
+
+        /* 固定单词 */
+        h1 {
+            /* color: red; */
+        }
+
+        /*rgb/rgba */
+        h1 {
+            /* color: rgb(255, 0, 0); */
+            /* 0也要把%写上 */
+            /* color: rgb(100%, 0%, 0%); */
+            /* color: rgba(255, 0, 0, 0.5); */
+        }
+
+        /* 16进制 【HEX】 */
+        h1 {
+            color: #ff0000;
+        }
+
+        html {
+            font-size: 100px;
+        }
+
+        /* 尺寸 */
+        #box1 {
+            width: 50%;
+            height: 50%;
+            background: cadetblue;
+            font-size: 2px;
+        }
+
+        #box1 .box {
+            /* %:是针对父元素计算的 */
+            width: 50%;
+            /* height: 50%; */
+            /* em是根据 父元素 的字体大小  1em = 字体尺寸 */
+
+
+            /* height: 10em; */
+            /* rem是根据 根元素 的字体大小  */
+            /* height: 10rem; */
+
+            /* vw/vh :根据可视窗口 */
+            /* vmin/vmax : 可视窗口里的那个最小值/最大值 */
+            /* height: 10vmin; */
+            height: calc(50% + 10em);
+
+            background: rosybrown;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>同学们回去要看<a
+            href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance">优先级与继承</a>的内容，加深理解
+    </h1>
+    <div id="box1">
+        <div class="box"></div>
+    </div>
+
+</body>
+
+</html>
