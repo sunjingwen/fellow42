@@ -8,7 +8,7 @@
     <style>
         body {
             width: 1200px;
-            height: 1200px;
+            height: 2000px;
             border: solid;
             font-size: 16px;
         }
@@ -22,15 +22,16 @@
 
         /*rgb/rgba */
         h1 {
+            background:  rgba(225, 0, 0, 0.2);
             /* color: rgb(255, 0, 0); */
             /* 0也要把%写上 */
             /* color: rgb(100%, 0%, 0%); */
-            /* color: rgba(255, 0, 0, 0.5); */
+            /* color: rgba(212, 2, 2, 0.2); */
         }
 
         /* 16进制 【HEX】 */
         h1 {
-            color: #ff0000;
+            /* color: #ff0000; */
         }
 
         html {
@@ -56,14 +57,78 @@
             /* rem是根据 根元素 的字体大小  */
             /* height: 10rem; */
 
-            /* vw/vh :根据可视窗口 */
-            /* vmin/vmax : 可视窗口里的那个最小值/最大值 */
-            /* height: 10vmin; */
-            height: calc(50% + 10em);
+            /* vw/vh :根据可视窗口  根据百分比    */
+            /* vmin/vmax : 可视窗口里的那个最小值/最大值   */
+            height: 10vmin;
 
+            /* calc() 中单位可以混用*/
+            /* height: calc(50% + 10em); */
             background: rosybrown;
         }
 
+        /* 背景 */
+        #box2 {
+            width: 800px;
+            height: 500px;
+            border: #ff0000 2px solid;
+        }
+
+        .bg {
+            width: 200px;
+            height: 400px;
+            /* border: 50px solid cadetblue; */
+            background-color: aqua;
+            background-image: url(../html/猫.png);
+            background-repeat: no-repeat;
+            /* background-repeat: repeat-x; */
+
+            /* 背景默认会占据内边距 */
+            /* padding: 100px; */
+            /* 背景默认不会占据外边距 */
+            /* margin: 100px; */
+
+            /* background-position: 0 100px; */
+            /* background-position: center center; */
+
+            overflow: scroll;
+            /* background-attachment: local; */
+            /* background-attachment: scroll; */
+            /* fixed :起始位置是相对与浏览器窗口（可是窗口）左上角而非父元素 */
+            /* background-attachment: fixed; */
+
+            /* 规定背景图片的绘制区域 */
+            /* background-origin: content-box; */
+            /* background-origin: padding-box; */
+            /* background-origin: border-box; */
+
+            /*  */
+            background-size: 30% 30%;
+            /* background-size: cover; */
+            /* background-size: contain; */
+
+            /* 从content区域开始向外裁剪背景 */
+            /* background-clip: content-box; */
+
+            /* background: aquamarine  url(../html/猫.png); */
+        }
+
+        /* font */
+        #font{
+            background: bisque;
+            height: 50px;
+            color: blue;
+            text-align: center;
+            line-height: 50px;
+            text-decoration: black line-through;
+            
+            font-style: italic;
+            font-weight:400;
+            font-size: 20px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+
+            opacity: 0.5;
+        }
     </style>
 </head>
 
@@ -74,7 +139,14 @@
     <div id="box1">
         <div class="box"></div>
     </div>
-
+    <div id="box2">
+        <div class="bg">
+            这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......这里事关于背景的很多事......
+        </div>
+    </div>
+    <div id="font">
+        By default we span 100% of the width of our parent element, and we are as tall as our child content.
+    </div>
 </body>
 
 </html>

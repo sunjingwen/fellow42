@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>默认布局</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 默认布局 */
+        /* 块元素：
+            1、每个块级元素会在上一个元素的下面另起一行
+            2、默认的，一个块级元素的内容宽度是其父元素的100%，高度由元素中的内容撑开（高度与其内容高度一致）
+         */
+        #box1 {
+            background: rebeccapurple;
+        }
+
+        #box1 .son {
+            background: saddlebrown;
+            /* 块 -> 行 */
+            /* display: inline; */
+            /* width: 200px; */
+
+        }
+
+        /* 行元素：
+            1、父级元素的宽度足够的话，行内元素会与文本内容,或其它行级元素同处一行,否则，超出宽度部分被移到下一行
+            2、行元素的宽高与内容一致，你无法设置行内元素的宽高
+         */
+        #box2 {
+            width: 200px;
+            background: seagreen;
+        }
+        #box2 span{
+            background: seashell;
+            border: sienna 1px solid;
+            /* 行 -> 块 */
+            /* width: 500px; */
+            /* display: block; */
+        }
+
+        #box3{
+            width: 200px;
+            height: 200px;
+            border: solid 2px rebeccapurple;
+        }
+        #box3 .item{
+            width: 50px;
+            height: 50px;
+            background: salmon;
+            /* 可以设置宽高的行级元素 */
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">爸爸
+        <div class="son">儿子儿子儿子</div>
+    </div>
+    <div id="box2">
+        这里有很多很多很多的内容。。。这里有很多很多很多的内容。。。<span>1111</span>
+        <span>222 222 222 222</span>
+        <span>ppppp-pppppppppppp pppppp ppppp pppppp</span>
+        <span>I love the world.I love the world.I love the world.I love the world.</span>
+        <span>这些字都是写在span里面的这些字都是写在span里面的这些字都是写在span里面的</span>
+    </div>
+    <div id="box3">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+
+</html>

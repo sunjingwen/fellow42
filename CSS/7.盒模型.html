@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒模型</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 块级盒子：
+            1、默认宽度与父元素相同
+            2、每个块级盒子都会换行
+            3、宽高可以发挥作用
+            4、padding，margin，border 会将其他元素从当前盒子周围推开
+        
+         */
+        div:nth-child(1) {
+            background: salmon;
+            width: 100px;
+            height: 100px;
+            /* padding会把元素中的内容向内挤，盒子所占的空间会增大 */
+            padding: 10px;
+            /* margin会将其它元素推离当前元素 */
+            margin: 20px;
+            border: 5px solid skyblue;
+
+            /* 怪异盒模型（IE） */
+            box-sizing: border-box;
+            /* box-sizing: content-box; */
+        }
+
+        div:nth-child(2) {
+            background: yellow;
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            /* 上下边距合并了 */
+        }
+
+        div:nth-child(3) {
+            margin: 20px;
+        }
+
+        div:nth-child(4) {
+            background: orangered;
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            /* 上下边距合并了 */
+        }
+
+        div:nth-child(1) span:nth-child(1) {
+            background: white;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>div1 <span>span1</span> <span>span2 span2 span2 span2 span2 span2</span> </div>
+    <div>div2</div>
+    <div></div>
+    <div>div4</div>
+
+</body>
+
+</html>
