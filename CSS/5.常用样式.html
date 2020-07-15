@@ -10,6 +10,7 @@
             width: 1200px;
             height: 2000px;
             border: solid;
+            border-radius: 10px;
             font-size: 16px;
         }
 
@@ -22,7 +23,7 @@
 
         /*rgb/rgba */
         h1 {
-            background:  rgba(225, 0, 0, 0.2);
+            background: rgba(225, 0, 0, 0.2);
             /* color: rgb(255, 0, 0); */
             /* 0也要把%写上 */
             /* color: rgb(100%, 0%, 0%); */
@@ -83,7 +84,7 @@
             /* background-repeat: repeat-x; */
 
             /* 背景默认会占据内边距 */
-            /* padding: 100px; */
+            padding: 100px;
             /* 背景默认不会占据外边距 */
             /* margin: 100px; */
 
@@ -94,38 +95,39 @@
             /* background-attachment: local; */
             /* background-attachment: scroll; */
             /* fixed :起始位置是相对与浏览器窗口（可是窗口）左上角而非父元素 */
-            /* background-attachment: fixed; */
+            background-attachment: fixed;
 
             /* 规定背景图片的绘制区域 */
             /* background-origin: content-box; */
             /* background-origin: padding-box; */
             /* background-origin: border-box; */
 
-            /*  */
-            background-size: 30% 30%;
-            /* background-size: cover; */
-            /* background-size: contain; */
-
-            /* 从content区域开始向外裁剪背景 */
+            /* 裁切背景的显示区域（从设置值以外的背景全都不要） */
             /* background-clip: content-box; */
+            /* background-clip: padding-box; */
+
+            /* background-size: 500px 500px; */
+            /* background-size: 30% 30%; */
+            background-size: contain;
+            /* background-size: cover; */
+
 
             /* background: aquamarine  url(../html/猫.png); */
         }
 
         /* font */
-        #font{
+        #font {
             background: bisque;
             height: 50px;
             color: blue;
             text-align: center;
             line-height: 50px;
             text-decoration: black line-through;
-            
+
             font-style: italic;
-            font-weight:400;
+            font-weight: 400;
             font-size: 20px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
 
             opacity: 0.5;
         }
