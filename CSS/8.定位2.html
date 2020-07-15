@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 2000px;
+        }
+
+        #outer {
+            width: 500px;
+            height: 500px;
+            background: #cccccc;
+            /* margin-left: 100px;
+            margin-top: 50px; */
+
+            /*  四个外边距都是50px */
+            margin: 50px;
+
+            /* 第一个值代表上下，第二个值代表左右 */
+            /* margin: 50px 100px; */
+
+            /* 上 左右  下 */
+            /* margin: 50px 60px 80px; */
+
+            /* 上 右 下 左 */
+            /* margin: 50px 60px 70px 80px; */
+
+            /* position: relative; */
+            top: 50px;
+            left: 100px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+
+        #box1 {
+            background: red;
+        }
+
+        #box2 {
+            background: green;
+            /* position: relative; */
+            /* relatice:
+                1、位置相对于自身原始位置计算
+                2、不脱离文档流（原来占的位置不被释放）
+                3、可能会覆盖其它元素
+             */
+
+            /* position：
+                1、脱离文档流（原来占的位位置会被释放）
+                2、位置计算是相对于最近已定位父元素
+            */
+
+            /* position: absolute; */
+
+            /* position: fixed; */
+            /* fixed：
+                1、计算位置是相对于浏览器窗口
+                2、脱离文档流（原来占的位位置会被释放）
+            */
+
+            position: sticky;
+            /* sticky：（relative  +  fixed ）
+                1、计算位置是相对于浏览器窗口           
+             */
+            top: -10px;
+            left: 300px;
+            /* bottom: 20px; */
+        }
+
+        #box3 {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div class="box" id="box1"></div>
+        <div class="box" id="box2"></div>
+        <div class="box" id="box3"></div>
+    </div>
+</body>
+
+</html>
