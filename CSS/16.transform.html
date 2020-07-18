@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform</title>
+    <style>
+        .test .rotate {
+            /* 浏览器内核的前缀 */
+            /* 火狐浏览器 */
+            -moz-transform: rotate(-5deg);
+            /* chrome，Safari */
+            -webkit-transform: rotate(-5deg);
+            /* IE浏览器 */
+            -ms-transform: rotate(-5deg);
+            /* opera（欧朋浏览器） */
+            -o-transform: rotate(-5deg);
+        }
+
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin: 200px auto;
+
+            /* 沿着中心点旋转 */
+            /* 顺时针旋转 */
+            /* transform: rotate(45deg); */
+            /* 逆时针旋转 */
+            /* transform: rotate(-45deg); */
+
+            /* 设置旋转点 */
+            transform-origin: 0 0 ;
+
+            /* 相对于自己原来的位置位移(左 上) */
+            /* transform:translate(50px,100px); */
+            /* transform: translateX(50px); */
+
+            /* 缩放 */
+            transform: scale(0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+</body>
+
+</html>

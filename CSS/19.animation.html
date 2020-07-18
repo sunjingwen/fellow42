@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+
+            /* animation: ease move 2s 0.2s infinite alternate; */
+            animation: ease move 2s 0.2s forwards;
+        }
+
+        #box1:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes move {
+            0% {
+                width: 200px;
+            }
+
+            30% {
+                width: 600px;
+            }
+
+            70% {
+                transform: rotate(0);
+            }
+
+            100% {
+                width: 600px;
+
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+</body>
+
+</html>

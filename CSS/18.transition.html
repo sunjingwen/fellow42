@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        #box1:hover{
+            width: 400px;
+            height: 600px;
+            /* 过渡效果（有过渡效果的属性 过渡持续时间 延迟效果开始的时间 过渡效果动画） */
+            transition: all 2s  1s  ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+</body>
+</html>
