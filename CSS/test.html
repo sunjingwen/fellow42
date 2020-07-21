@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位撑开元素</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            margin: 200px auto;
+            border: solid 5px #000000;
+            position: relative;
+        }
+
+        .item {
+            background: red;
+            position: absolute;
+            top: 100px;
+            right: 0;
+            left: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <div class="item"></div>
+    </div>
+</body>
+
+</html>
