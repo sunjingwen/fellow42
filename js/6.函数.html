@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数</title>
+</head>
+
+<body>
+    <script>
+        // 函数提升
+        // 函数声明:可以在定义函数前调用该函数
+        fun1();
+
+        function fun1() {
+            console.log('fun1');
+        }
+        // fun1();
+
+        // fun2();
+        // 函数表达式:不能在定义前调用
+        var fun2 = function () {
+            console.log('fun2');
+        }
+        // fun2();
+
+        // 形参
+        function add(x, y) {
+            console.log(arguments);
+            console.log(arguments.length);
+            console.log(x + y);
+            // console.log(x);
+            // console.log(y);
+            return x + y;
+
+        }
+        // 实参
+        add(1, 5);
+        // var sum = add(2,3);
+        // console.log(sum);
+
+        // 递归
+        // 阶乘 n!
+        function factorial1(n) {
+            
+            if( n == 0 || n == 1 ){
+                return 1;
+            }else{
+                return( n * arguments.callee(n-1));
+            }
+        }
+        var result = factorial(4);
+        console.log(result);
+
+    </script>
+</body>
+
+</html>

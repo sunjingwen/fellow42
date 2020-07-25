@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算符</title>
+</head>
+
+<body>
+    <script>
+        // 1、数字运算符（+ - * / %）
+        var a = 3;
+        var b = 2;
+        // console.log(a + b);
+
+        var c = 5;
+        var d = '3';
+        var e = true;
+        var ee = false;
+        var f = undefined;
+        var g = null;
+
+        console.log(c % b); //取余
+        /* 
+            加法运算：
+                1、都是number，简单的数学运算
+                2、一旦出现字符串，字符串拼接
+                3、出现了boolen => true = 1 ; false = 0
+                4、若遇到其它类型，先调用number（）的方法，若能转换为数字就正常计算,若转化的是NAN，则结果就是NAN（not a number）
+         */
+        console.log(c + d);
+        console.log(c + e);
+        console.log(c + ee);
+        console.log(c + f);
+        console.log(d + f);
+
+
+        /* 
+            其它运算：
+                1、都是number，正常的数学运算
+                2、若遇到其它类型，先调用number（）的方法，若能转换为数字就正常计算,若转化的是NAN，则结果就是NAN（not a number）
+        */
+        console.log(c - d);
+        console.log(c - e);
+        console.log(c - ee);
+        console.log(c - f);
+        console.log(d - f);
+
+
+
+
+        //2、赋值运算符（= += -= *= /=）
+        // c = c + 1;
+        // c += 3;
+        // console.log(c);
+
+        // 3、自增自减运算符
+        /*  a++;
+         b--; */
+        // a++是先运算再自增，++a先自增再运算
+        // console.log(a++);
+        // console.log(++a);
+
+        //4、比较运算符(> , <  , >= , <= , == , ===  , != )
+        // console.log(a > b);
+        // console.log(a >= b);
+        console.log(a == b);
+        // ==判断的只是变量的值，数据类型可以不相等
+        console.log(a == d);
+        // === 数据类型和数值都判断
+        console.log(a === d);
+        console.log(a != b);
+
+
+        // 5、类型运算符
+       
+        var h = [1, 3];
+        var i = {
+            name: 'xiaohua'
+        };
+        // typeof 只能用来判断基本数据类型（不包括null）
+        console.log(typeof a);
+        console.log(typeof d);
+        console.log(typeof e);
+        console.log(typeof f);
+        console.log(typeof g);
+        console.log(typeof h);
+        console.log(typeof i);
+
+        console.log(h instanceof Array);
+
+        // 6、逻辑运算符（&&  ||  !）
+    </script>
+</body>
+
+</html>

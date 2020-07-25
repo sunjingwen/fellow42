@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件语句</title>
+</head>
+
+<body>
+    <script>
+        var a = 10;
+        var b = 20;
+
+        if (a < b) {
+            // 方法体
+            console.log('a<b');
+        } else {
+            // a++
+            console.log('a不小于b');
+        }
+        // 三目运算（三项表达式）
+        a < b ? console.log('a<b') : console.log('a不小于b');
+
+        if (a < b) {
+            console.log('a<b');
+        } else if (a == b) {
+            console.log('a=b');
+        } else {
+            console.log('a>b');
+        }
+
+        // 逻辑运算符（&&  ||  !）
+
+        var c = '10';
+        var d = 10;
+        // 与逻辑，&& 左右的条件都要满足
+        if (c == d && d < b) {
+            console.log('条件成立');
+        }
+        // 或逻辑 ，|| 左右两端满足一个就行了
+        if (c === d || d < b || c == d || b < c) {
+            console.log('条件成立');
+        }
+        // 非逻辑，讲true，false 置反
+        var e = false
+        if (!e) {
+            console.log('条件成立');
+        }
+
+        var condition = 5;
+        switch (condition) {
+            case 4:
+                alert('condition是4');
+                break;
+            case 3:
+                alert('condition是3');
+                break;
+            case 2:
+                alert('condition是2');
+                break;
+            case 1:
+                alert('condition是1');
+                break;
+            default:
+                // alert('什么都不是');
+        }
+
+        var age = 18;
+        switch (true) {
+            case age < 12:
+                console.log('儿童');
+                break;
+            case 12 <= age < 30:
+                console.log('青年');
+                break;
+            case 30 <= age:
+                console.log('中年');
+                break;
+            default:
+                console.log('什么都不是');
+        }
+    </script>
+</body>
+
+</html>
