@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.4 素数</title>
+</head>
+
+<body>
+    <p>
+        4. 在页面上编程输出100~1000之间的所有素数，并要求每行显示6个素数。
+    </p>
+    <script>
+        function isPrime(n) {
+            if (n <= 1) {
+                return false;
+            }
+            for (var i = 2; i < n; i++) {
+                if (n % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        var nb = 0;
+        console.log(isPrime(4));
+        for (var i = 100; i <= 1000; i++) {
+            if(isPrime(i)){
+                nb++;
+                document.write(i+ ' ');
+                if(nb %6 == 0){
+                    document.write('<br>');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域</title>
+</head>
+
+<body>
+    <script>
+        // 变量提升
+        // console.log(a);
+        // var a = 123;
+        // 相当于
+        /*  var a ;
+         console.log(a);
+         a = 123; */
+
+        /* 作用域：
+            1、全局作用域
+            2、函数作用域
+        */
+
+        // 在函数体外面定义的变量是 全局变量 ，在任意地方都可以访问到
+         var b = 666;
+
+        function fn1() {
+            // 在函数体内定义的变量是局部变量，只可以在该函数中访问到
+            d = 233;
+            var c = 999;
+            console.log(b);
+        }
+
+        fn1();
+        // 函数体内部定义的变量是局部变量，全局作用域里无法访问到局部变量
+        // console.log(c);
+        console.log(d);
+    </script>
+</body>
+
+</html>

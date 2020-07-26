@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.4</title>
+</head>
+
+<body>
+    <p>4.编写程序，计算 1!+2!+3!+…..＋10！的结果。</p>
+    <script>
+        // 方案一
+        /*    function factorial(n) {
+               var fab = 1;
+               for (var i = 1; i <= n; i++) {
+                   fab *= i;
+               }
+               return fab;
+           }
+           console.log(factorial(3));;
+           var sum = 0
+           for (var i = 1; i <= 10; i++) {
+               sum += factorial(i)
+           }
+           console.log(sum); */
+
+        // 方案二
+       /*  var sum = 0
+        var fab = 1;
+        for (var i = 1; i <= 10; i++) {
+            fab *= i;
+            sum += fab;
+        }
+        console.log(sum); */
+
+        // 方案三
+        var sum1 = 0;
+        for (var i = 1; i <= 10; i++) {
+            var n = 1;
+            // console.log('iiii:' + i);
+            for (var j = 1; j <= i; j++) {
+                // console.log('j:' + j);
+                n *= j;
+            }
+            sum1 += n;
+        }
+        alert(" 1!+2!+3!+…..＋10！=" + sum1);
+    </script>
+</body>
+
+</html>
