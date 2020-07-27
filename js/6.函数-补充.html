@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            数据类型：
+            1. 基本类型（原始类型）：string、number、boolean、undefined、null、symbol（es6）
+            2. 引用类型：object
+        */
+        // 函数声明
+        /* fn1();
+        function fn1(){
+
+        } */
+
+
+        // 函数表达式
+        /* var a = 5;
+        var b = "abc"; */
+        // 函数在js中就是一种值，一种数据类型，它属于引用类型
+        /* var fn2 = function(){
+            console.log('haha...');
+        };
+        fn2();
+
+        var fn3 = new Function("console.log('haha...')");
+        fn3(); */
+
+        /* function fn1(x) {
+            x();
+        }
+        var f = function () {
+            console.log('haha');
+        };
+        fn1(f); */
+
+        /* function fn2(x){
+            return x;
+        }
+
+        var y = fn2(function(){
+            console.log('hehe');
+        }); */
+
+        // y.fn2();
+        // y();
+
+        // 
+        // 编程范式：
+        // 1. 面向过程编程
+        // 2. 面向对象编程
+        // 3. 泛型编程
+        // 4. 函数式编程
+        // 5. 可微分编程
+
+        // 一段恶心你们的代码，哈哈哈
+        function test(a){
+            a(function(c){
+               c();
+            });
+        }
+        test(function(b){
+           b(function(){
+                console.log('haha');
+           });
+        });
+
+
+    </script>
+</body>
+
+</html>

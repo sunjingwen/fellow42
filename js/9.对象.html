@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+</head>
+<body>
+    <!-- 
+        对象（object）：everything is object，一切皆对象
+        只要你关心它，想研究它，不管它是具体的事物，还是抽象的事物，都是对象。
+        对象的属性（property）和方法（method）
+        面象对象(object-oriented)
+        OOA(analysis)：
+        OOD(design):
+        OOP(programming)：
+     -->
+     <!-- 
+         人到图书馆借书
+         对象：
+            人：
+                属性：姓名、身份证
+
+            图书馆：
+                属性：馆名、地址
+
+            书：
+                属性：书名、ISBN
+
+            管理员：
+                属性：
+                方法：登记()
+      -->
+
+      <script>
+        //   创建对象的几种方式：
+        // 1. new Object()
+          var o1 = new Object();
+        //   name -> property-name
+        //   "lisi" -> property-value
+          o1.name = 'lisi'; 
+          o1.age = 23;
+        //   sayHello -> method
+          o1.sayHello = function(){
+              console.log('haha');
+          };
+        // 2. 使用对象直接量(literal)
+        var o2 = {
+            name: 'lisi',
+            age: 23,
+            sayHello: function(){
+              console.log('hehe');
+            }
+        };
+
+        // 3. Object.create()
+        // 该方法创建一个新对象(o3)，使用现有的对象(o1)来提供新创建的对象(o3)的__proto__
+        var o3 = Object.create(o1);
+        // 原型(prototype)：
+        // o3.__proto__ = o1;
+
+
+        // var o4 = new Object();
+        // o4.name = 'zhangsan';
+        // o4._gender = 'male';
+
+        // // ...
+
+
+        // o4.name = 'lisi';
+        // o4._gender = 'female'; //=> 这么做是错误的
+
+        // console.log(o4._gender);
+
+        // 4. new Class
+
+
+         /* 
+         // es6
+         class Person{
+             constructor(name, age){
+                this.name = name;
+                this.age = age;
+             }
+         }
+
+         var p1 = new Person('lisi', 23);
+         console.log(p1.name, p1.age); */
+
+        //  es5-
+        // 定义类
+        // 约定：属性放在类的构造函数中，方法放在类的原型中
+        var fn = new Function // =>fn=0x1231
+        function Person(name, age){
+            this.name = name;
+            this.age = age;
+            this.sayHello = 0x1231;
+        }
+        /* Person.prototype.sayHello =  function(){
+            console.log('My name is ' + this.name + ', hello');
+        }; */
+
+        // 创建类的实例对象
+        var p1 = new Person('lisi', 34);
+        console.log(p1);
+        // var p2 = new Person('wangwu', 23);
+        // console.log(p2);
+
+        // p1.sayHello();
+
+        // this: 是指对当前对象的引用
+
+        
+
+
+      </script>
+</body>
+</html>

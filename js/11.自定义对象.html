@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义对象</title>
+</head>
+
+<body>
+    <script>
+        // js中有三种类型的对象
+        // 1. 自定义对象
+        /* 
+         人到图书馆借书
+         
+         对象：
+            人：
+                属性：姓名、身份证
+
+            图书馆：
+                属性：馆名、地址
+
+            书：
+                属性：书名、ISBN
+
+            管理员：
+                属性：
+                方法：登记() 
+        */
+        // 类的定义：具有相同的属性和方法的对象的集合
+        function Person(name, idCard) {
+            this.name = name;
+            this.idCard = idCard;
+        }
+        var person1 = new Person('lisi', '12345678');
+        var person2 = new Person('wangwu', 'jkdjdjdj');
+
+        var library = {
+            libraryName: '学府书店',
+            address: '南岗区学府路'
+        };
+
+        function Book(name, ISBN) {
+            this.bookName = name;
+            this.ISBN = ISBN;
+        }
+
+        var book1 = new Book('大学英语四级', "123456789");
+        var book2 = new Book('javascript高级程序设计', 'ksdkdkdk');
+
+        function Manager() { }
+        Manager.prototype.regist = function (person, book) {
+            console.log('借书人：' + person.name + ", 书名：" + book.bookName);
+        };
+
+
+        var manager1 = new Manager();
+        manager1.regist(person1, book1);
+        var manager2 = new Manager();
+        manager2.regist(person2, book2);
+
+        // 贪吃蛇游戏的面象对象的分析与设计
+        // 蛇
+        //  属性：长度、颜色
+        //  方法：move、eat、grow
+
+        // 食物
+        //  属性：位置、颜色
+        //  方法：
+
+        // 草场
+        //  属性：
+        //  方法：生成食物
+
+        // 游戏类(对象)
+        //  属性：speed
+        //  方法：开始游戏、结束游戏、暂停游戏、设置速度。。。
+
+        var snake = {
+            length: 3,
+            move: function () { },
+            eat: function () {
+                //假设当蛇吃到食物的时候：
+                groud.createFood();
+            },
+            grow: function () { }
+        };
+
+        function Food() {
+            this.pos = {
+                left: Math.random(),
+                top: Math.random()
+            };
+        }
+
+        var groud = {
+            createFood: function () {
+                var food1 = new Food();
+                /* food1.pos = {
+                    left: Math.random(),
+                    top: Math.random()
+                }; */
+            }
+        };
+
+        groud.createFood();
+
+        var game = {
+            speed: 3,
+            start: function(){
+                snake.move();
+            },
+            stop: function(){
+
+            }
+        };
+
+        game.start();
+
+
+
+        // 2. 内置对象
+
+        // 3. bom和dom对象
+    </script>
+</body>
+
+</html>
