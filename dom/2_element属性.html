@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>element属性</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: relative;
+            top: 50px;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    111
+    <h1 class="haha lala xixi ">element属性 <span>span</span>
+        <!-- 666 -->
+    </h1>
+    99
+    <div id="box1">
+        <div id="item1">item1</div>
+    </div>
+    <script>
+        // style
+        var oH1 = document.querySelector('h1');
+        oH1.style.background = 'red';
+
+        //className
+        // oH1.className = 'hehe';
+        // console.log(oH1.className);
+
+        // classList
+        console.log(oH1.classList); //只是可读的属性，不可以修改(又很多方法可以操纵classList)
+
+        // nodeType(返回节点类型【元素1，属性2，文本3，注释8】)
+        console.log(oH1.nodeType);
+        console.log(oH1.getAttributeNode('class').nodeType);
+        console.log(oH1.firstChild.nodeType);
+
+        // nodeValue:返回节点的值(如果是元素节点返回的是null【元素节点没有值】)
+        console.log(oH1.getAttributeNode('class').nodeValue); //属性节点返回的是属性值
+        console.log(oH1.firstChild.nodeValue); //文本节点返回的是文本值
+
+        // children，childNodes
+        var oBody = document.querySelector('body');
+        console.log(oBody.children); //返回所有子元素
+        console.log(oBody.childNodes); //返回所有子节点
+        console.log(oH1.childNodes); //返回所有子节点【属性节点不能通过该属性获取到，必须通过getAttributeNode】
+
+        //firstChild ,firstElementChild
+        console.log(oH1.firstChild); //属性返回被选节点的第一个子节点
+        console.log(oH1.firstElementChild); //返回第一个子元素
+
+        //nextSibling, nextElementSibling
+        console.log(oH1.nextSibling);//紧挨着的下一个兄弟节点
+        console.log(oH1.nextElementSibling);//紧挨着的下一个兄弟元素
+
+        // previousSibling, previousElementSibling
+      
+        var oBox1 = document.querySelector('#box1');
+        var oItem1 = document.querySelector('#item1');
+        // parentNode,parentElement:效果都用一样，返回的都是父元素，parentNode是w3c的标准写法，parentElement只能在IE中使用
+        console.log(oItem1.parentNode);//更推荐使用这个
+        console.log(oItem1.parentElement);//
+
+        console.log(oItem1.offsetParent);//返回最近已定位父元素
+
+
+
+    </script>
+</body>
+
+</html>

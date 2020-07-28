@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navigator</title>
+</head>
+
+<body>
+    <!--
+        Chrome: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36
+        Mozilla: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:72.0) Gecko/20100101 Firefox/72.0
+        Opera: 5_navigator.html:20 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36 OPR/67.0.3575.53 (Edition B2)
+        Safari: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.2 Safari/605.1.15 (5_navigator.html, line 20)
+        iPhone: Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1   
+        
+        navigator.userAgent 的作用：淘宝就是用这个来确定浏览该网页的设备是电脑还是手机
+    -->
+    <script>
+        console.log(navigator.userAgent);
+        if(navigator.userAgent.indexOf('iPhone') == -1){
+            //做pc端的事情
+        }else{
+            // 做移动端的事情
+        }
+        console.log(location.search);
+    </script>
+</body>
+
+</html>
