@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bom</title>
+    <style>
+        body {
+            width: 2000px;
+            height: 2000px;
+        }
+
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>hello</h1>
+    <div id="div1">回到顶部</div>
+    <button id="btn1">打开百度</button>
+    <script>
+        // 滚动条
+        var oDiv1 = document.getElementById('div1');
+        oDiv1.onclick = function () {
+
+            // window.scrollTo(0, 0)
+
+            scrollBy(0, -50);
+
+        }
+
+        // 在新窗口打开指定页面
+
+        var oBtn1 = document.getElementById('btn1');
+        oBtn1.onclick = function(){
+            open('https://www.baidu.com','haha');
+        }
+    </script>
+</body>
+
+</html>
