@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>element属性</title>
     <style>
-        #box1{
+        #box1 {
             width: 100px;
-            height: 100px;
+            height: 200px;
+            padding: 50px;
+            border: 10px #000 solid;
+            margin: 50px;
             background: red;
             position: relative;
             top: 50px;
@@ -19,17 +22,25 @@
 
 <body>
     111
-    <h1 class="haha lala xixi ">element属性 <span>span</span>
+    <h1 class="haha lala xixi ">element属性 <span>span111</span>
         <!-- 666 -->
     </h1>
     99
-    <div id="box1">
+    <div id="box1" style="width: 200px; padding: 100px; ">
         <div id="item1">item1</div>
+        <div id="item2">item2</div>
     </div>
+    <div id="box2">box2</div>
     <script>
-        // style
+        // style （他是加到了内联里，获取也只能获取内联里写过的属性）
         var oH1 = document.querySelector('h1');
+        var oBox1 = document.querySelector('#box1');
+        var oItem1 = document.querySelector('#item1');
+
         oH1.style.background = 'red';
+        oH1.style.border = '2px solid #000';
+
+        console.log(oH1.style);
 
         //className
         // oH1.className = 'hehe';
@@ -38,40 +49,50 @@
         // classList
         console.log(oH1.classList); //只是可读的属性，不可以修改(又很多方法可以操纵classList)
 
-        // nodeType(返回节点类型【元素1，属性2，文本3，注释8】)
-        console.log(oH1.nodeType);
-        console.log(oH1.getAttributeNode('class').nodeType);
-        console.log(oH1.firstChild.nodeType);
 
-        // nodeValue:返回节点的值(如果是元素节点返回的是null【元素节点没有值】)
-        console.log(oH1.getAttributeNode('class').nodeValue); //属性节点返回的是属性值
-        console.log(oH1.firstChild.nodeValue); //文本节点返回的是文本值
+        // nodeType nodeValue      
+        console.log(oH1.nodeType); //元素节点
+        console.log(oH1.getAttributeNode('class').nodeType); //属性节点
+        console.log(oH1.firstChild.nodeType); //文本节点
 
-        // children，childNodes
-        var oBody = document.querySelector('body');
-        console.log(oBody.children); //返回所有子元素
-        console.log(oBody.childNodes); //返回所有子节点
-        console.log(oH1.childNodes); //返回所有子节点【属性节点不能通过该属性获取到，必须通过getAttributeNode】
+        console.log(oH1.nodeValue);
+        console.log(oH1.getAttributeNode('class').nodeValue);
+        console.log(oH1.firstChild.nodeValue);
 
-        //firstChild ,firstElementChild
-        console.log(oH1.firstChild); //属性返回被选节点的第一个子节点
-        console.log(oH1.firstElementChild); //返回第一个子元素
+        //children，childNodes
+        console.log(oBox1.children); //返回所有的子元素
+        console.log(oBox1.childNodes); //返回所有的子节点，空格和换行看做是文本节点
 
-        //nextSibling, nextElementSibling
-        console.log(oH1.nextSibling);//紧挨着的下一个兄弟节点
-        console.log(oH1.nextElementSibling);//紧挨着的下一个兄弟元素
+        // firstChild，firstElementChild
+        console.log(oBox1.firstChild); //返回该元素的第一个子节点
+        console.log(oBox1.firstElementChild); //返回第一个子元素
 
-        // previousSibling, previousElementSibling
-      
-        var oBox1 = document.querySelector('#box1');
-        var oItem1 = document.querySelector('#item1');
+        // lastChild，lastElementChild
+
+        // nextSibling,nextElementSibling
+        console.log(oBox1.nextSibling); //返回该元素紧跟着的下面的节点
+        console.log(oBox1.nextElementSibling); //返回该元素紧跟着的下面的元素
+
+        // previousSibling,previousElementSibling
+
         // parentNode,parentElement:效果都用一样，返回的都是父元素，parentNode是w3c的标准写法，parentElement只能在IE中使用
-        console.log(oItem1.parentNode);//更推荐使用这个
-        console.log(oItem1.parentElement);//
+        console.log(oItem1.parentElement); //返回该元素的父元素
+        console.log(oItem1.parentNode); //更推荐使用这个
 
-        console.log(oItem1.offsetParent);//返回最近已定位父元素
+        console.log(oItem1.offsetParent); //返回最近已定位父元素
 
+        console.log(oH1.innerHTML); //返回该元素中的所有
+        console.log(oH1.textContent); //返回该元素中的所有文本
 
+        //offsetWidth,offsetHeight  不算margin，别的都算
+        console.log(oBox1.offsetWidth);
+        console.log(oBox1.offsetHeight);
+        // 获取的是content区域的宽度，字符型，带px
+        console.log(oBox1.style.width);
+
+        // offsetTop，offsetLeft
+        console.log(oItem1.offsetTop);//相对于最近已定位父元素的距离
+        console.log(oItem1.offsetLeft);
 
     </script>
 </body>

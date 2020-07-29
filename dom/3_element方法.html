@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>element方法</title>
+</head>
+
+<body>
+    <ul id="ul1" aa='bb'>
+        <li>111</li>
+    </ul>
+    <button id="btn1">加</button>
+    <button id="btn2">减</button>
+    <button id="btn3">换</button>
+    <button id="btn4">在最前面加一个</button>
+    <button id="btn5">在最后面加第一个</button>
+    <script>
+        var oUl1 = document.getElementById('ul1');
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oBtn3 = document.getElementById('btn3');
+        var oBtn4 = document.getElementById('btn4');
+        var oBtn5 = document.getElementById('btn5');
+        /* appendChild */
+        oBtn1.onclick = function () {
+            var oLi = document.createElement('li');
+            oLi.innerHTML = 'appendChild';
+            oUl1.appendChild(oLi);
+        }
+        /* removeChild  */
+        oBtn2.onclick = function () {
+            oUl1.removeChild(oUl1.lastElementChild);
+        }
+        /* replaceChild ( 新，旧 )*/
+        oBtn3.onclick = function () {
+
+            // var oLi = document.createElement('li');
+            // oLi.innerHTML = 'replaceChild';
+            // oUl1.replaceChild(oLi, oUl1.firstElementChild);
+
+            // var textNode = document.createTextNode('haha');
+            // var oLi = oUl1.firstElementChild;
+            // oLi.replaceChild(textNode,oLi.childNodes[0]);
+
+            oUl1.firstElementChild.innerHTML = 'hehehe';
+
+        }
+        /* insertBefore (新,位置)*/
+        oBtn4.onclick = function () {
+            var oLi = document.createElement('li');
+            oLi.innerHTML = 'insertBefore';
+            oUl1.insertBefore(oLi, oUl1.firstElementChild);
+        }
+
+        /* cloneNode(布尔)  true：深拷贝，克隆该元素下面的所有节点；false：只克隆元素不克隆子节点 */
+        oBtn5.onclick = function () {
+            var oLi = oUl1.firstElementChild;
+            var oClone = oLi.cloneNode(true);
+            oUl1.appendChild(oClone);
+        }
+
+        // 对象属性
+        console.log(oUl1.id); //ul1
+        oUl1.id = 'lalala'; //只是改了id的值，但是元素还是在的，可以正常获取的到
+        // 给dom设置对象属性
+        oUl1.cc = 'dd';
+        console.log(oUl1.cc);
+
+
+        /*  自定义dom属性 : getAttribute,setAttribute */
+        // 给元素设置自定义dom属性只能通过这种方式
+        oUl1.setAttribute('ee','ff');
+        // 自定义dom属性只能通过该方法获取到
+        console.log(oUl1.ee);//undefined
+        console.log(oUl1.getAttribute('ee'));
+        
+    </script>
+</body>
+
+</html>

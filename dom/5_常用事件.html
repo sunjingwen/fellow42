@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用事件</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oSex = document.getElementById('sex');
+            oSex.onchange = function () {
+                console.log(666);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p>
+        <input type="text" id="username" value="请输入名字">
+    </p>
+
+    <p>
+        <select name="" id="sex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+    </p>
+
+    <p>
+        <input type="text" id="search" value="">
+    </p>
+
+    <button id="btn1">点我点我呀</button>
+
+    <div id="div1">12345</div>
+
+    <form id="myform" action="http://www.baidu.com">
+        <p>
+            用户名： <input type="text">
+        </p>
+        <p>
+            密码： <input type="text">
+        </p>
+
+        <button type="submit">提交</button>
+    </form>
+
+
+
+    <script>
+        // onfocus,onblur
+        var oInput = document.getElementById('username');
+        oInput.onfocus = function () {
+            console.log(this.value);
+            if (this.value == '请输入名字') {
+                this.value = '';
+            }
+        }
+        oInput.onblur = function () {
+            if (this.value == '') {
+                this.value = '请输入名字';
+            }
+        }
+
+        // onchange
+        var oSex = document.getElementById('sex');
+        oSex.onchange = function () {
+            console.log(666);
+        }
+
+        //keydown, keyup
+
+        var oSearch = document.getElementById('search');
+        /*   oSearch.onkeydown = function () {
+              console.log(this.value);
+        } */
+
+        oSearch.onkeyup = function () {
+            console.log(this.value);
+        }
+
+        var oDiv1 = document.getElementById('div1');
+        // 鼠标滑入
+        /*     oDiv1.onmouseover = function () {
+                console.log('我进去了');
+            }
+            // 鼠标滑出
+            oDiv1.onmouseout = function () {
+                console.log('我出去了');
+            }
+            // 鼠标移动
+            oDiv1.onmousemove = function () {
+                console.log('我在移动');
+            } */
+
+        var oBtn1 = document.getElementById('btn1');
+        oBtn1.onclick = function () {
+            console.log(111);
+        }
+        // onmousedown,onmouseup
+        // 鼠标按下
+        oBtn1.onmousedown = function () {
+            console.log('我按下了');
+        }
+
+        //   onsubmit
+        var oForm = document.getElementById('myform');
+        oForm.onsubmit = function () {
+            return false;
+        }
+
+        // onload
+    </script>
+</body>
+
+</html>
