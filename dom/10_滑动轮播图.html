@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #container {
+            width: 750px;
+            height: 291px;
+            margin: 100px auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #img-box {
+            width: calc(750px * 5);
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: left 1s ease;
+        }
+
+        #img-box>img {
+            float: left;
+        }
+
+        #tab {
+            display: flex;
+            width: 120px;
+            justify-content: space-between;
+            position: absolute;
+            right: 50px;
+            bottom: 30px;
+        }
+
+        #tab>li {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            color: #ffffff;
+        }
+
+        #tab>li.active {
+            background: rgba(255, 0, 0, 0.8);
+        }
+
+        .btn {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #ffffff;
+            font-size: 50px;
+            line-height: 40px;
+            text-align: center;
+            position: absolute;
+            /* top: calc(50% - 25px); */
+            top: 50%;
+            /* margin-top: -25px; */
+            transform: translateY(-50%);
+        }
+
+        #prev {
+            left: 0;
+        }
+
+        #next {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="img-box">
+            <img src="imgs/1.jpg" alt="">
+            <img src="imgs/2.jpg" alt="">
+            <img src="imgs/3.jpg" alt="">
+            <img src="imgs/4.jpg" alt="">
+            <img src="imgs/5.jpg" alt="">
+        </div>
+        <ul id="tab">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <span id="prev" class="btn">&lt;</span>
+        <span id="next" class="btn">&gt;</span>
+    </div>
+    <script>
+        var oContainer = document.getElementById('container');
+        var oImgBox = document.getElementById('img-box');
+        var aImg = document.querySelectorAll('#img-box>img');
+        var aLi = document.querySelectorAll('#tab>li');
+
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+
+        var currentIndex = 0;
+
+        function change() {
+            // 样式初始化
+
+            for (var j = 0; j < aLi.length; j++) {
+                aLi[j].className = '';
+            }
+            aLi[currentIndex].className = 'active';
+            oImgBox.style.left = -750 * currentIndex + 'px';
+
+        }
+
+        /* 1、类似选项卡，根据tab切换图片 */
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].index = i;
+            aLi[i].onclick = function () {
+                currentIndex = this.index;
+                change();
+            }
+        }
+
+        /* 2、翻页 */
+        oNext.onclick = function () {
+            currentIndex++;
+            if (currentIndex > 4) {
+                currentIndex = 0;
+            }
+            change();
+        }
+
+        oPrev.onclick = function () {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = 4;
+            }
+            change();
+        }
+        /* 3、自动翻页 */
+
+        var timer;
+
+        function go() {
+            timer = setInterval(function () {
+                oNext.onclick();
+            }, 1000);
+        }
+        go();
+        oContainer.onmouseout = function () {
+            go();
+        }
+        oContainer.onmouseover = function () {
+            clearInterval(timer)
+        }
+    </script>
+</body>
+
+</html>
