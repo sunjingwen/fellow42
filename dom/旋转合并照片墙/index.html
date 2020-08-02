@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旋转合并照片墙</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        #container {
+            height: 100%;
+            background: url(./img/bg.jpg);
+            position: relative;
+        }
+
+        .thumbs {
+            width: 125px;
+            height: 125px;
+            border: 5px solid #ffffff;
+            position: absolute;
+            top: -135px;
+            left: -135px;
+            transition: all ease 2s;
+        }
+
+        .thumbs span {
+            position: absolute;
+            top: -0;
+            bottom: 0;
+            left: -0;
+            right: 0;
+            display: none;
+        }
+
+        #prev {
+            width: 50px;
+            height: 100px;
+            background: url(./img/prev.png) #ffffff no-repeat center;
+            border-radius: 0 15px 15px 0;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            transition: ease 1s all;
+            opacity: 0;
+
+        }
+
+        #next {
+            width: 50px;
+            height: 100px;
+            background: url(./img/next.png) #ffffff no-repeat center;
+            border-radius: 15px 0 0 15px;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            transition: ease 1s all;
+            opacity: 0;
+
+        }
+
+        #prev:hover,
+        #next:hover {
+            background-color: #cccccc;
+            transition: ease 0.5s all;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <!-- img动态创建 -->
+        <div id="prev"></div>
+        <div id="next"></div>
+    </div>
+
+    <script>
+        // 函数立即调用：将代码封装到一个局部环境里，避免全局（window）污染
+        (function () {
+            var oContainer = document.getElementById('container');
+            /* 1、加载所有的图片 */
+            var count = 0
+            for (var i = 0; i < 24; i++) {
+                // 加载所有的小图
+                // var oSmallImg = document.createElement('img');
+                var oSmallImg = new Image();
+                oSmallImg.src = 'img/thumbs/' + (i + 1) + '.jpg';
+                oSmallImg.onload = function () {
+                    count++;
+                    if (count == 48) {
+                        //图片加载完了，可以写逻辑了
+                        loadSuccess();
+                    }
+                }
+
+                // 加载所有的大图
+                var oBigImg = new Image();
+                oBigImg.src = './img/' + (i + 1) + '.jpg';
+                oBigImg.onload = function () {
+                    count++;
+                    if (count == 48) {
+                        //图片加载完了，可以写逻辑了
+                        loadSuccess();
+                    }
+                }
+            }
+
+            function loadSuccess() {
+                var imgName = 0; //为了创建div的时候计算图片的名字
+                var index = 0; //当前显示的图片索引
+                var isBig = false;
+                var oPrev = document.getElementById('prev');
+                var oNext = document.getElementById('next');
+
+                /* 2、创建24个小div装小图片 */
+                for (var i = 0; i < 4; i++) {
+                    for (var j = 0; j < 6; j++) {
+                        imgName++;
+                        var oDiv = document.createElement('div');
+                        oDiv.style.background = 'url(img/thumbs/' + imgName + '.jpg)';
+                        oDiv.className = 'thumbs';
+                        // 为了计算位置
+                        oDiv.row = i;
+                        oDiv.col = j;
+                        // 注册点击事件
+                        oDiv.onclick = toggle;
+                        // 用span装大图
+                        oDiv.innerHTML = '<span></span>';
+                        oDiv.index = imgName;
+                        oContainer.appendChild(oDiv);
+                    }
+                }
+                /* 3、计算小div的位置 */
+                var aThumbs = document.getElementsByClassName('thumbs');
+                var smallImgWidth = smallImgHeight = 125;
+
+                // 小图片空隙的距离
+                var smallDisX = (oContainer.offsetWidth - 6 * (smallImgWidth + 10)) / 7;
+                var smallDisY = (oContainer.offsetHeight - 4 * (smallImgHeight + 10)) / 5;
+
+                // 大图片空隙的距离
+                var bigDisX = (oContainer.offsetWidth - 6 * (smallImgWidth + 2)) / 2;
+                var bigDisY = (oContainer.offsetHeight - 4 * (smallImgHeight + 2)) / 2;
+                var aSpan = oContainer.getElementsByTagName('span');
+
+                for (var i = 0; i < aThumbs.length; i++) {
+                    aThumbs[i].style.left = (aThumbs[i].col + 1) * smallDisX + aThumbs[i].col * (smallImgWidth +
+                        10) + 'px';
+                    aThumbs[i].style.top = (aThumbs[i].row + 1) * smallDisY + aThumbs[i].row * (smallImgHeight +
+                        10) + 'px';
+                    aThumbs[i].style.transform = 'rotate(' + (Math.random() * 40 - 20) + 'deg)';
+                    aThumbs[i].style.transitionDelay = (aThumbs.length - i) * 100 + 'ms';
+                }
+                /* 4、单击小div的时候切换图片状态 */
+                function toggle() {
+                    index = this.index;
+                    if (isBig) {
+                        // 散开
+                        for (var i = 0; i < aThumbs.length; i++) {
+                            aThumbs[i].style.left = (aThumbs[i].col + 1) * smallDisX + aThumbs[i].col * (
+                                smallImgWidth +
+                                10) + 'px';
+                            aThumbs[i].style.top = (aThumbs[i].row + 1) * smallDisY + aThumbs[i].row * (
+                                smallImgHeight +
+                                10) + 'px';
+                            aThumbs[i].style.transform = 'rotate(' + (Math.random() * 40 - 20) + 'deg)';
+                            aThumbs[i].style.borderWidth = '5px';
+                            aSpan[i].style.display = 'none';
+                        }
+                        isBig = !isBig;
+                        oPrev.style.opacity = oNext.style.opacity = 0;
+
+                    } else {
+                        // 合并
+                        for (var i = 0; i < aThumbs.length; i++) {
+                            aThumbs[i].style.left = bigDisX + aThumbs[i].col * (smallImgWidth +
+                                2) + 'px';
+                            aThumbs[i].style.top = bigDisY + aThumbs[i].row * (smallImgHeight +
+                                2) + 'px';
+                            aThumbs[i].style.transform = 'rotate(0deg)';
+                            aThumbs[i].style.transitionDelay = '0ms';
+                            aThumbs[i].style.borderWidth = '1px';
+
+                            aSpan[i].style.display = 'block';
+                            // 注意拼字符串不要忘记空格
+                            aSpan[i].style.background = 'url(img/' + index + '.jpg) ' + -aThumbs[i].col *
+                                smallImgWidth + 'px ' + -aThumbs[i].row * smallImgHeight + 'px';
+                        }
+                        isBig = !isBig;
+                        oPrev.style.opacity = oNext.style.opacity = 1;
+                    }
+                }
+
+                oPrev.onclick = function () {
+                    // index--;
+                    // if(index <1){
+                    //     index = 24;
+                    // }
+                    index = index <= 1 ? 24 : --index;
+                    for (var i = 0; i < aSpan.length; i++) {
+                        aSpan[i].style.backgroundImage = 'url(img/' + index + '.jpg) ';
+                        aSpan[i].style.transitionDelay = Math.random() * 500 + 'ms';
+                    }
+                }
+                oNext.onclick = function () {
+                    index = index >= 24 ? 1 : ++index;
+                    for (var i = 0; i < aSpan.length; i++) {
+                        aSpan[i].style.backgroundImage = 'url(img/' + index + '.jpg) ';
+                        aSpan[i].style.transitionDelay = Math.random() * 500 + 'ms';
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
