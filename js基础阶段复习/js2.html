@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+
+    <script>
+        fn1();
+        // 函数声明有【函数提升】
+        function fn1() {
+
+        }
+
+
+        // 函数表达式
+        var fn2 = function () {
+
+        };
+        fn2();
+
+        function test() {
+            return function () {
+                console.log('haha');
+            }
+        }
+        test()();
+
+        function test2() {
+            // var a;
+            // 变量提升
+            console.log(a);
+            var a = 5;
+        }
+        test2();
+
+        function test3(name, age) {
+            console.log(arguments.length);
+            console.log(name, age, arguments[2]);
+        }
+        test3('lisi', 23, 'male');
+        // 如何得到函数的形参个数
+        console.log(test3.length);
+
+        function fac1(n) {
+            if (n <= 1) {
+                return 1;
+            }
+            return n * arguments.callee(n - 1);
+        }
+
+
+        var fn5 = function fact(n) {//具名函数
+            if (n <= 1) {
+                return 1;
+            }
+            return n * fact(n - 1);
+        };
+
+        // fn5();
+
+        // ***this***
+        function fn6(){
+            console.log(this);
+        }
+        var aa = new fn6();
+
+
+        var oBtn = document.getElementById('btn');
+        oBtn.onclick = function(){
+            // var _this = this;
+            var that = this;
+            setTimeout(function(){
+                that.style.background = "red";
+            }, 2000);
+        };
+    </script>
+</body>
+
+</html>
