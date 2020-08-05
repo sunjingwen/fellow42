@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ul1">
+        <li class="aa bb">item 1</li>
+        <li class="aa">item 2</li>
+        <li>item 3</li>
+    </ul>
+
+    <ul id="ul2">
+        <li class="aa">11</li>
+        <li class="aa">22</li>
+        <li class="aa">33</li>
+    </ul>
+
+    <div id="div1">
+        <h1 id="bb">这是一个h1</h1>
+        <p>这是一个p</p>
+    </div>
+
+    
+    <script>
+        /* var obj = {
+            name: 'lisi',
+            sayHello: function(){
+                console.log('haha');
+            }
+        };
+        if(obj.sayHello){
+            obj.sayHello();
+        } */
+
+        function getByClassName(className, tagName, context){
+            context = context || document;
+            //检测当前浏览器的版本
+            if(    document.getElementsByClassName  ){
+                return context.getElementsByClassName(className);
+            }else{
+                var result = [];
+                tagName = tagName || "*";
+                var arr = context.getElementsByTagName(tagName);
+                for(var i=0; i<arr.length; i++){
+                    // "aa bb" == "aa"
+                    // 此处最好的处理方式是引用正则表达式
+                    if(arr[i].className.indexOf(className) != -1){
+                        result.push(arr[i]);
+                    }
+                }
+                return result;
+            }
+        }
+
+        getByClassName('aa', document);
+
+        function next(elem){
+            do{
+                elem = elem.nextSibling;
+            }while(elem && elem.nodeType != 1);
+            return elem;
+        }
+
+        function first(elem){
+            elem = elem.firstChild;
+            return elem && elem.nodeType != 1 ? next(elem) : elem;
+        }
+
+
+        var oUl1 = document.getElementById('ul1');
+        // oUl1.getElementsByClassName('aa');
+        var aLi = getByClassName('aa', 'li', oUl1);
+        for(var i=0; i<aLi.length; i++){
+            aLi[i].style.background = 'red';
+        }
+
+
+
+        /* var oH1 = document.getElementById('bb');
+        var elem2  = next(oH1); //返回oH1的下一个元素兄弟，否则返回null
+        if(elem2){
+            elem2.style.background = 'blue';
+        }
+ */
+        
+
+        var oDiv1 = document.getElementById('div1');
+        var elem1 = first(oDiv1); //返回oDiv1的第一个元素子节点，否则返回null
+        if(elem1){
+            elem1.style.background = 'green';
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #ul1 li {
+            background: #ff0000;
+            margin: 10px;
+        }
+
+        #ul1 li:first-child {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        div1
+    </div>
+
+    <ul id="ul1">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            var oDiv1 = document.getElementById('div1'); //原生dom对象
+            var $div2 = $('#div1');//jq对象
+            // jq对象 -> 原生dom对象
+            var oDiv3 = $('#div1')[0];
+            // 原生dom对象 -> jq对象
+            var $div4 = $(oDiv1);
+
+            // console.log(oDiv1 == oDiv3);
+
+            //    console.log( $('#ul1 li').css('width'));
+
+            $('#div1').click(function(){
+                console.log($(this));
+            });
+        });
+    </script>
+</body>
+
+</html>
