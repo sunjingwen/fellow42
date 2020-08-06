@@ -33,7 +33,11 @@
     <script>
         $(function () {
             var oDiv1 = document.getElementById('div1'); //原生dom对象
+
             var $div2 = $('#div1');//jq对象
+
+            console.log($(oDiv1) == $div2);
+
             // jq对象 -> 原生dom对象
             var oDiv3 = $('#div1')[0];
             // 原生dom对象 -> jq对象

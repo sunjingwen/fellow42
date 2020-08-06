@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #tbl,
+        #tbl td {
+            border: 1px solid #000000;
+        }
+
+        #tbl {
+            border-collapse: collapse;
+            margin: 50px auto;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn-load">加载数据</button>
+    <table id="tbl">
+        <tr>
+            <td>编号</td>
+            <td>用户名</td>
+            <td>性别</td>
+        </tr>
+
+    </table>
+
+    <script src="./jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#btn-load').on('click', function () {
+                // get获取数据
+                $.get('server.php', function (res) {
+                    console.log(res);
+                    for (var i = 0; i < res.length; i++) {
+                        var user = res[i];
+                        $('#tbl').append('<tr><td>' + user.id + '</td><td>' + user.name + '</td><td>' + user.gender + '</td></tr>');
+                    }
+                });
+                // post提交数据
+                /* $.post('server.php', {
+                    username: 'haha',
+                    age: 12
+                }, function(res){
+                    // ...
+                }); */
+
+                $.ajax({
+                    url: 'server.php',
+                    method: 'post',
+                    data: {
+                        username: 'haha',
+                        age: 12
+                    },
+                    success: function(){
+
+                    },
+                    error: function(){
+                        
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
