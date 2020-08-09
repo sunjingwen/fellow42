@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rest</title>
+</head>
+
+<body>
+  <script>
+    function fn1(x, y) {
+      // 获取传递的所有的实参
+      console.log(arguments);
+      console.log(arguments.length);
+      console.log(arguments.callee);
+    }
+    fn1(1, 2, 3, 4, 5);
+
+    function fn2(x, y, ...rest) {
+      console.log(x, y); //1 2
+      // 获取没接到的参数
+      console.log(rest); //[3, 4, 5]
+    }
+    fn2(1, 2, 3, 4, 5);
+
+    let [a, b, c, d, e] = [1, 2, 3, [4, 5]]
+    console.log(a, b, c, d, e); //1 2 3 [4,5] undefined
+  </script>
+</body>
+
+</html>

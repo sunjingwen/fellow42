@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>扩展运算符</title>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  <script>
+    /* 1、数组的扩展运算符 */
+
+    // 1、拷贝数组
+    let arr1 = [1, 2, 3, [2, 3]];
+    // //不是赋值，是拷贝了，但是是浅拷贝；
+    // let arr2 = [...arr1];
+    // console.log(arr2);
+    // arr2[3][0] = 666;
+    // console.log('arr1', arr1);
+    // console.log('arr2', arr2);
+
+    // //2、让一个数组作为另一个数组的一部分
+    // let arr3 = [333, 2, ...arr1];
+    // console.log(arr3);
+
+    // //3、将多个数组连在一起
+    // let arr4 = [4, 5];
+    // let arr5 = ['a', 'b'];
+    // let arr6 = arr4.concat(arr5);
+    // console.log(arr6); //[4,5,'a','b']
+
+    // // 有顺序的
+    // let arr7 = [...arr4, ...arr5];
+    // console.log(arr7);
+
+    // let b1 = [1, 2, [3, 4]]
+    // let b2 = [6, 7, ...b1];
+    // console.log(b2); //6,7,1,2,[3,4]
+
+    //4、把类数组转化成数组
+    // 类数组：看起来跟数组一样，没有数组中的方法
+    let aLi = document.getElementsByTagName('li');
+    // aLi.push('cbd');//aLi.push is not a function:没有数组中的方法
+    console.log(aLi);
+
+    let aLI = [...aLi];
+    aLI.push('cbd')
+    console.log(aLI);
+
+    arr1.push('abc');
+    console.log(arr1);
+
+    /* 2、对象的扩展运算符 */
+    // 1、拷贝对象
+    let obj1 = {
+      name: 'lisi',
+      age: 13
+    }
+    let obj2 = {
+      ...obj1
+    }
+    console.log(obj2);
+
+    // 2、让一个对象作为另一个对象的一部分
+
+    // 属性重名的话后面的会覆盖前面的
+    let obj3 = {
+      sex: 'female',
+      name: 'wangwu',
+      ...obj1
+    }
+    console.log(obj3); //lisi
+
+    // 3、将多个对象连在一起
+    let obj4 = {
+      height: '183cm',
+      name: 'zhaosi'
+    }
+    let obj5 = {
+      ...obj1,
+      ...obj4,
+    }
+    console.log(obj5);
+  </script>
+</body>
+
+</html>
