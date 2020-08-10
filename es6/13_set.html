@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>set</title>
+</head>
+
+<body>
+  <script>
+    let a1 = [7777, 1, 2, 2, 3, 4, 4, 5, 6, 6, 6, 6];
+    let s1 = new Set(a1); //类数组，不允许成员重复
+
+    let a2 = [...s1];
+    console.log(a2);
+
+    // 添加数据 add() => 返回更改后的set
+    console.log(s1.add(888));
+    s1.add(6);
+    s1.add('hello');
+    s1.add({
+      word: 'world'
+    })
+
+    // 获取长度  size
+    console.log(s1.size);
+
+    // 删除数据 delete()  => boolean
+    console.log(s1.delete(888)); //true
+    console.log(s1.delete(0)); //false
+
+    // 判断是否含有某个数据  has()  => boolean
+    console.log(s1.has('hello')); //true
+    console.log(s1.has('world')); //false
+
+    // 清空 clear()
+    // s1.clear()
+
+    console.log(s1);
+
+    // 循环  for ... of
+    for (let [index, value] of s1.entries()) {
+      console.log(index, value); //index 和 value 都一样
+    }
+
+    /* WeakSet()  : 和set类似，但是只能添加对象 */
+    let wsArr = new WeakSet();
+    let obj = {
+      name: 'zhaosi',
+      age: 88
+    }
+    wsArr.add(obj);
+    // wsArr.add(666); //报错，只能添加对象，别的类型的数值都不可以
+    console.log(wsArr);
+  </script>
+</body>
+
+</html>

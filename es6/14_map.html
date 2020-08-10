@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>map</title>
+</head>
+
+<body>
+  <script>
+    let m1 = new Map();
+
+    // 添加成员 set()
+    m1.set('name', 'liuneng');
+
+    // 不允许有重名的key  否则后面的值会覆盖前面的
+    m1.set('name', 'zhaosi');
+    m1.set('age', '888');
+
+    // 获取长度
+    console.log(m1.size);
+
+    // 获取数据  get()
+    console.log(m1.get('age'));
+
+    // 判断是否有某个key => boolean
+    console.log(m1.has('name'));
+
+    // 删除数据 delete()
+    // console.log(m1.delete('age'));
+
+    // 清空  clear()
+
+    // m1.clear();
+
+    // 循环
+
+    for (let [index, value] of m1.entries()) {
+      console.log(index, value);
+    }
+    console.log(m1);
+
+    /*  */
+    let wm1 = new WeakMap();
+    // wm1.set("name", "wangwu"); //报错：键名只能用对象，别的类型的值都不可以
+    wm1.set({
+      name: 'wanmgwu'
+    }, "666")
+    console.log(wm1);
+  </script>
+</body>
+
+</html>
