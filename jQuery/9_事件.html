@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+        #ul1{
+            background: #cccccc;
+        }
+        #ul1 li{
+            background: #ff0000;
+        }
+
+        #outer{
+            width: 400px;
+            height: 300px;
+            background: #cccccc;
+        }
+        #inner{
+            width: 300px;
+            height: 200px;
+            background: #00ff00;
+        }
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: #0000ff
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btn1">点我</button>
+    <button id="btn2">trigger</button>
+    <button id="btn3">triggerHandler</button>
+
+    
+
+    <form action="http://www.baidu.com" id="myform">
+        <p>
+            <input type="text" id="username" value="abc">
+        </p>
+        <p>
+            <input type="password">
+        </p>
+        <p>
+            <button type="submit" id="btn-submit">提交</button>
+        </p>
+    </form>
+
+    <!-- <ul id="ul1">
+        <li>item 1</li>
+        <li class="aa">item 2</li>
+        <li class="aa">item 3</li>
+        <li>item 4</li>
+        <li>item 5</li>
+    </ul> -->
+
+    <div id="outer">
+        outer
+        <div id="inner">
+            inner
+        </div>
+    </div>
+
+    <div id="div1">
+        haha
+    </div>
+    
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        $(function(){
+            var oBtn = document.getElementById('btn1');
+            /* oBtn.onclick = function(){
+                console.log('haha');
+            };
+            oBtn.onclick = function(){
+                console.log('hehe');
+            }; */
+            /* oBtn.addEventListener('click', function(){
+                console.log('haha');
+            }, false);
+            oBtn.addEventListener('click', function(){
+                console.log('hehe');
+            }, false); */
+            /* $('#btn1').click(function(){
+                console.log('haha');
+            });
+            $('#btn1').click(function(){
+                console.log('hehe');
+            }); */
+
+            /* $('#btn1').on('click', function(){
+                console.log('haha');
+            }); */
+
+            /* var liClickHandler = function(){
+                console.log(this.innerHTML);
+            }
+ */
+            // var oUl1 = document.getElementById('ul1');
+            // 事件委托：
+            // 1. 子元素过多的事件绑定问题
+            // 2. 后生成元素的事件绑定问题
+            /* oUl1.onclick = function(e){
+                e = e || window.event;
+                var target = e.target || e.srcElement;
+                if(target.tagName == "LI"){
+                    console.log(target.innerHTML);
+                }
+            }; */
+            /* var aLi = oUl1.getElementsByTagName('li');
+            for(var i=0; i<aLi.length; i++){
+                aLi[i].addEventListener('click', liClickHandler, false);
+            } */
+
+            /* $('#ul1').on('click', 'li', function(e){
+                console.log(this.innerHTML);
+            }); */
+
+            /* $(window).on('resize', function(){
+                console.log(Math.random());
+            });
+            $(window).on('scroll', function(){
+                console.log(Math.random());
+            }); */
+
+            $('#btn1').on('click', function(){
+                console.log('haha');
+            });
+
+            $('#username').on('focus', function(){
+                console.log(this.value);
+            });
+
+            $('#myform').on('submit', function(e){
+                console.log('haha');
+
+                e.preventDefault();
+            });
+
+            $('#btn2').on('click', function(){
+                // $('#btn1').trigger('click');
+                // $('#username').trigger('focus');
+                $('#myform').trigger('submit');
+            })
+            $('#btn3').on('click', function(){
+                // $('#btn1').triggerHandler('click');
+                $('#myform').triggerHandler('submit');
+            });
+
+            $('#outer').on('mouseenter', function(){
+                console.log('outer...');
+            });
+            $('#inner').on('mouseenter', function(){
+                console.log('inner...');
+            });
+
+            $('#div1').on('mousedown', function(e){
+                console.log(e.pageX, e.pageY);
+                console.log(e.type);
+                console.log(e.which);
+                if(e.which == 3){
+                    console.log('右键...');
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

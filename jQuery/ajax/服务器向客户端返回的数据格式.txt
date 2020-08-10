@@ -1,0 +1,15 @@
+服务器向客户端返回的数据格式：
+1. text
+2. xml
+3. json
+
+json（js object notation）格式数据：
+[
+    {id: 11, name: 'lisi', gender: '男'},
+    {id: 22, name: 'wangwu', gender: '女'}
+]
+
+[
+    {"id":11,"name":"lisi","gender":"\u7537"},
+    {"id":22,"name":"wangwu","gender":"\u5973"}
+]

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 100px;
+            background: #cccccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="btn1">点我</button>
+
+    <p class="aa">第一个p</p>
+    <p class="aa">第二个p</p>
+    <p>第三个p</p>
+
+    <h1>这是h1</h1>
+
+    <div id="div1"></div>
+
+    <div id="div2">
+        div2
+    </div>
+
+    <script src="./iQuery.js"></script>
+    <script>
+        // $函数深入研究
+        // 1. 接收一个函数：作为文档就绪函数
+        /* $(function () {
+            console.log(111);
+        });
+
+        $(function () {
+            console.log(222);
+        }); */
+
+    
+
+        // 2. 接收一个字符串：作为选择器
+        // $('#btn1').click(function(){
+        //     console.log('btn...');
+        // }); // id选择器
+        $('.aa').click(function(){
+            console.log('p...');
+        });  // class选择器
+        // $('h1').click(function(){
+        //     console.log('h1...');
+        // });  // 标签选择器
+
+
+        // 3. 接收一个原生dom对象：直接将该dom对象转化为jQuery对象
+        // var oBtn = document.getElementById('btn1');
+        // $(oBtn).click(function(){
+        //     console.log('btn haha');
+        // }) //=>jQuery对象
+
+        // // mouseover/mouseout
+        // $('#div1').mouseover(function(){
+        //     console.log('hover...');
+        // });
+        // $('#div1').mouseout(function(){
+        //     console.log('out...');
+        // });
+
+        $('#div2')
+        .css('background', 'red')
+        .css('width', 200)
+        .click(function(){
+            console.log('hehehehe');
+        });
+
+        console.log($('#div2').css('background'));
+
+        $('#div2').css({
+            width: "100px",
+            height: '50%',
+            color: 'green'
+        });
+    </script>
+</body>
+
+</html>

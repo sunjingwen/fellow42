@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btn1">淡出</button>
+    <button id="btn2">淡入</button>
+    <button id="btn4">折叠</button>
+    <button id="btn5">展开</button>
+    <button id="btn6">fadeTo</button>
+    <button id="btn7">hide</button>
+    <button id="btn8">show</button>
+    <button id="btn9">animate</button>
+    <button id="btn3">动画完成后的回调</button>
+
+    <div id="div1"></div>
+    
+    <script src="./jquery-1.11.3.min.js"></script>
+    <script src="./jquery.easing.1.3.js"></script>
+    <script>
+        $(function(){
+            $('#btn1').click(function(){
+                $('#div1').fadeOut(2000);
+            });
+            $('#btn2').click(function(){
+                $('#div1').fadeIn(2000);
+            });
+            $('#btn3').click(function(){
+                var $div1 = $('#div1');//将选中的元素进行缓存！！！
+                // 动画是异步的
+                $div1.fadeOut(2000, function(){
+                    // console.log('动画已完成...');
+                    $div1.fadeIn(2000, function(){
+                        // $div1.height(0);
+                        $div1.slideToggle(2000);
+                    });
+                });
+               
+            });
+            $('#btn4').click(function(){
+                $('#div1').slideUp(2000);
+            });
+            $('#btn5').click(function(){
+                $('#div1').slideDown(2000);
+            });
+            $('#btn6').click(function(){
+                $('#div1').fadeTo(2000, 0.5);
+            });
+            $('#btn7').click(function(){
+                $('#div1').hide(1000);
+            });
+            $('#btn8').click(function(){
+                $('#div1').show(2000);
+            });
+            $('#btn9').click(function(){
+                var $div1 = $('#div1');
+                $div1.animate({
+                    opacity: 0.25,
+                    left: "+50"
+                }, 3000, "easeInQuart", function(){
+                    $div1.animate({
+                        opacity: 1,
+                        left: "-50"
+                    }, 200);
+                });
+            });
+
+            // callback: 回调
+        });
+    </script>
+</body>
+</html>
