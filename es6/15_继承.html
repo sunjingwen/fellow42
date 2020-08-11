@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>继承</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      类：是具有相同属性和方法的对象的集合
+          1、构造函数的名字要大写(为了和普通函数区分开)
+          2、属性写在构造函数里
+          3、方法要写到原型里
+    */
+
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    Person.prototype.sleep = function () {
+      console.log(this.name + ' is sleeping...');
+    }
+
+    /*
+      原型到底是什么？：
+        原型被设计出来的目的就是为了实现继承的功能，在原型下面添加的所有属性和方法都会被实例化对象所继承
+        当访问一个对象中的属性或者方法的时候，会先去这个对象的构造函数中去找有没有这个属性和方法：
+          有 => 就返回找到的值
+          没有 => 就到这个对象的原型中去找有没有那个属性和方法
+            没有 => 就到他的上一级（也就是他的父类）的构造函数和原型中去找
+              =》  Object
+                没有 =>  属性：undefined
+                        方法：xx is not a function
+    */
+
+    /*
+      为什么属性不放到原型里写？
+        1、如果属性的值还是一个对象的话，那可能会出现原型中的属性的值被篡改
+        2、不能通过传参给属性赋值
+    */
+
+    Object
+    Person.prototype.gender = 'male';
+    Person.prototype.borther = {
+      name: 'lisi',
+      age: 88
+    };
+
+    let p1 = new Person('p1', 23);
+    let p2 = new Person('p2', 66);
+    console.log(p1);
+    p1.gender = 'female'; // 赋值 ：p1添加一个gender属性 => female
+    console.log(p1.gender); //female ：查找是有gender这个属性
+    console.log(p2.gender); //male
+
+    p1.borther.age = 55;
+    console.log(p2.borther.age); //55 => 原型里的属性被修改了
+    console.log(p1.constructor == Person);
+
+
+
+
+    /*
+      继承：
+        1、在子类的构造函数中，要用call（）继承父类中的属性
+        2、子类的prototype = 父类的实例化对象，用来继承父类中的方法
+        3、让子类的constructor指回子类
+
+    */
+    // function Student(name, age, grade) {
+    //   // this => s1
+    //   Person.call(this, name, age) //改变person中的this指向，使其指向Student的实例化对象
+    //   this.grade = grade;
+    // }
+
+    // Student.prototype = new Person() //继承Person里面的所有的方法  （prototype:必须是函数里才有，对象里没有）
+    // Student.prototype.constructor = Student; // 为了将Student的构造函数改回来
+    // // Student.prototype = Person.prototype; // 给Student添加的方法也会添加到Person中
+
+    // console.log(Student.prototype);
+
+    // Student.prototype.code = function () {
+    //   console.log(this.name + ' is codeing...');
+    // }
+
+    // let s1 = new Student('wangwu', 23, '20级');
+    // console.log(s1.constructor == Student);
+
+    // s1.sleep()
+    // p1.code();
+
+
+    
+
+    function Student(name, age, grade) {
+
+      Person.call(this, name, age);
+
+      this.grade = grade;
+    }
+
+    Student.prototype = new Person();
+    Student.prototype.constructor = Student;
+
+    Student.prototype.code = function () {
+      console.log(this.name + ' is codeing...');
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>
