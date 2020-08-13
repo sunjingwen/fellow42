@@ -1,0 +1,14 @@
+h1 {
+  color: red;
+}
+
+#div1 {
+  background: url(http://localhost:8083/images/cfd6ea11c3b00057703bfd21fa79a470.jpg);
+  height: 500px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+h2 {
+  color: #35ff90;
+}

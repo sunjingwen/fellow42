@@ -1,0 +1,12 @@
+h1{
+  color: red;
+}
+#div1{
+  background: url(./imgs/StockSnap_3VLGQNBZP2-720x405.jpg);
+  height: 500px;
+  transform: rotate(45deg);
+}
+
+#student{
+  padding: 30px;
+}
