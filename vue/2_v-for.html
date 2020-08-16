@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V-for</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <!-- 参数的顺序是不可以变的，参数的名字可以随便取 -->
+      <li v-for="(student,index ) in students">
+        <span>序号：{{index + 1}} </span>
+        <span>姓名: {{student.name}} </span>
+        <span>年纪: {{student.age}} </span>
+      </li>
+    </ul>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        students: [{
+            name: 'lisi',
+            age: 23
+          },
+          {
+            name: 'wangwu',
+            age: 35
+          },
+          {
+            name: 'zhaosi',
+            age: 77
+          },
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>

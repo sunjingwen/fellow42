@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue的使用
+
+  </title>
+</head>
+
+<body>
+  <div id="app">
+    {{ msg }}
+  </div>
+
+  <!-- 没有挂在的元素不生效 -->
+  <div id="container">
+    {{ msg }}
+  </div>
+  <!-- 引入vue -->
+  <script src="./vue.js"></script>
+  <script>
+    let vm = new Vue({
+      // 确定挂在的元素
+      el:'#app',
+      // 声明要绑定的数据
+      data:{
+        msg:'hello world'
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件修饰符</title>
+  <style>
+    #div1 {
+      width: 200px;
+      height: 200px;
+      background: red;
+    }
+
+    #div2 {
+      width: 100px;
+      height: 100px;
+      background: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="div1" v-on:click.once="fn1">
+      div1
+      <div id="div2" @click.stop="fn2">div2</div>
+    </div>
+
+    <a v-on:click.prevent="fn3" href="https://www.baidu.com">百度一下</a>
+
+    <!-- 
+      .stop   阻止事件冒泡，e.stopPropagation()
+      .prevent 阻止默认行为，preventDefault
+      .once
+    -->
+
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+
+      },
+      methods: {
+        fn1() {
+          console.log('div1');
+        },
+        fn2() {
+          console.log('div2');
+        },
+        fn3() {
+          console.log(666);
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

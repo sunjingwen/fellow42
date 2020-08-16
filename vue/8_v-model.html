@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- v-model    双向数据绑定，只能用于表单元素  -->
+    <p>
+      <input type="text" v-model="msg">
+    </p>
+
+    <p>
+      <input type="checkbox" v-model="fruit" value="apple">苹果
+      <input type="checkbox" v-model="fruit" value="banana">香蕉
+      <input type="checkbox" v-model="fruit" value="pear">梨
+    </p>
+
+    <p>
+      <input type="radio" v-model="sex" value="0">男
+      <input type="radio" v-model="sex" value="1">女
+    </p>
+
+    <p>
+      <select v-model="city">
+        <option value="哈">哈尔滨</option>
+        <option value="齐">齐齐哈尔</option>
+        <option value="牡">牡丹江</option>
+        <option value="佳">佳木斯</option>
+      </select>
+    </p>
+
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        msg: '',
+        fruit: [
+          'pear'
+        ],
+        sex: '0',
+        city: '牡',
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>
