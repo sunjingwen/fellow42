@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件的定义</title>
+</head>
+
+<body>
+  <div id="app1">
+    <my-component title="我的组件1" :msg="msg"></my-component>
+
+    <tpl1 :msg="msg" title="tpl1111"></tpl1>
+    <tpl2 title="tp2222222222222"></tpl2>
+  </div>
+  <!-- 
+    模块化：(js:  请求数据，判断用户的设备，格式化当前时间 )
+    组件化：(html ,css ,cs   =>  (轮播图，弹窗) )
+   -->
+
+  <div id="app2">
+    <my-component title="我的组件2"></my-component>
+    <!-- 局部组件不能在定义它之外的地方使用 -->
+    <!-- <tpl1 title="tpl1111"></tpl1> -->
+  </div>
+
+  <script src="./vue.js"></script>
+  <script>
+    // 全局组件
+    Vue.component('myComponent', {
+      template: '<div> {{title}}  {{msg}} </div>',
+      /*  
+          通过props来接收父组件传的值:
+            若传的值是常量， title="我的组件"
+            若传的是变量，   :msg="msg"
+      */
+      props: ['title', 'msg']
+    })
+
+    // 局部组件
+    let vm1 = new Vue({
+      el: '#app1',
+      data: {
+        msg: 'hello world!'
+      },
+      components: {
+        'tpl1': {
+          template: '<div> hahahaha  {{title}}  {{msg}} </div>',
+          props: ['title', 'msg']
+        },
+        'tpl2': {
+          template: '<div> lalalalalala  {{title}} </div>',
+          props: ['title']
+        }
+      }
+
+    })
+    let vm2 = new Vue({
+      el: '#app2',
+
+    })
+  </script>
+</body>
+
+</html>

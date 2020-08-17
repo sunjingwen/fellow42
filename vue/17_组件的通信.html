@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件的通信</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="add1">加加加</button>
+    {{count}}
+    <!-- 组件的引用 -->
+    <!-- <my-component :message="msg" :fn1="add1" ></my-component> -->
+    <my-component :message="msg" @son="add1"></my-component>
+  </div>
+
+
+  <!-- 组件的定义 -->
+  <template id="tpl">
+    <div>
+      <h3> {{message}} </h3>
+      <button @click="add2">++++++</button>
+    </div>
+  </template>
+
+
+  <script src="./vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '爸爸说的话:好孩子要好好学习',
+        count: 0,
+      },
+      methods: {
+        add1() {
+          this.count++;
+        }
+      },
+      components: {
+        'myComponent': {
+          template: '#tpl',
+          // props:用来接收父组件要传递给子组件的内容
+          props: [
+            'message', 'fn1'
+          ],
+          data() {
+            return {}
+          },
+          methods: {
+            add2() {
+
+              // 强烈不推荐，不要使用 ！！！！！
+              // vm.count++;
+
+              // 方案一
+              // this.fn1();
+
+              // 方案二
+              this.$emit('son');
+
+
+
+
+
+            }
+          },
+
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>
