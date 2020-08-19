@@ -20,7 +20,7 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    alias:'/aaa',
+    alias: '/aaa',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -59,7 +59,13 @@ const routes = [
     name: 'Test',
     component: Test,
     // redirect: '/'
-    // redirect: '/details/:id/:price'
+    // redirect: '/details/:id/:price',
+    beforeEnter: (to, from, next) => {
+      console.log('to', to);
+      console.log('from', from);
+      console.log('next', next);
+      next()
+    }
   },
   {
     path: '*',
