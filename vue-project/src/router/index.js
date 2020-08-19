@@ -5,6 +5,9 @@ import Course from '../views/Course.vue'
 import Fe from '../views/Fe.vue'
 import Rd from '../views/Rd.vue'
 import User from '../views/User.vue'
+import Details from '../views/Details.vue'
+import Error from '../views/Error.vue'
+import Test from '../views/Test.vue'
 
 Vue.use(VueRouter)
 
@@ -17,6 +20,7 @@ const routes = [
   {
     path: '/about',
     name: 'About',
+    alias:'/aaa',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -44,11 +48,28 @@ const routes = [
     name: 'User',
     component: User
   },
-  
+  {
+    path: '/details/:id/:price',
+    name: 'Details',
+    component: Details
+  },
+  {
+    path: '/test',
+    // path: '/test/:id/:price',
+    name: 'Test',
+    component: Test,
+    // redirect: '/'
+    // redirect: '/details/:id/:price'
+  },
+  {
+    path: '*',
+    name: 'Error',
+    component: Error
+  },
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })
