@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-on</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 事件源 ，事件处理函数 ，事件（$event或者在事件处理函数中直接用event） ，this -->
+    <!-- <button v-on:click="add('hahaha',$event)">添加</button> -->
+    <!-- v-on的简写 -->
+    <button @click="add('hahaha',$event)">添加</button>
+    <ul>
+      <li v-for="(student,index ) in students">
+        <span>序号：{{index + 1}} </span>
+        <span>姓名: {{student.name}} </span>
+        <span>年纪: {{student.age}} </span>
+      </li>
+    </ul>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        students: [{
+            name: 'lisi',
+            age: 23
+          },
+          {
+            name: 'wangwu',
+            age: 35
+          },
+          {
+            name: 'zhaosi',
+            age: 77
+          },
+        ]
+      },
+      methods: {
+        add(str, e) {
+          //进行数组中添加一个元素
+          // this => 当前实例化的vue对象(vm)
+          // 获取data当中的属性时直接 this.属性名  不需要 this.data.属性名
+          this.students.push({
+            name: 'lvrenjie',
+            age: 18
+          });
+          // 获取事件对象，必须写event，别的不行
+          // console.log(event);
+          console.log(str);
+          console.log(e);
+        },
+        // add:function(){
+
+        // }
+
+      },
+    })
+  </script>
+</body>
+
+</html>

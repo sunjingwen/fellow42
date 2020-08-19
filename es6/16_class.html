@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>class</title>
+</head>
+
+<body>
+  <script>
+    /* 1、定义一个类 */
+    class Person {
+      // 构造函数里定义属性
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      sleep() {
+        console.log(this.name + ' is sleeping...');
+      }
+      // 静态方法:不能通过对象.方法()的方式调用,只能通过 类名.方法()的方式调用   案例： Array.of()  Object.is()
+      static fn() {
+        console.log(666);
+      }
+    }
+
+    let p1 = new Person('lisi', 88);
+    console.log(p1.name);
+    p1.sleep();
+    // p1.fn();//报错
+    Person.fn();
+
+    /* 2、继承 */
+
+    class Student extends Person {
+      constructor(...param) {
+        // 继承父类的属性
+        super(...param);
+        this.grade = param[2];
+      }
+
+      code() {
+        console.log(this.name + ' is codeing...');
+      }
+    }
+    let s1 = new Student('wangwu', 33, '19级');
+    s1.sleep();
+    s1.code();
+  </script>
+</body>
+
+</html>

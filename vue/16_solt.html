@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>solt</title>
+</head>
+
+<body>
+  <div id="app">
+    <com></com>
+
+    <my-com title="haha66666666666">
+      <p slot="slot2">今天是个好天气1</p>
+      <p slot="slot1">今天是个好天气2</p>
+    </my-com>
+  </div>
+
+  <template id="my-com">
+    <div>
+      {{title}}
+      <slot name="slot1"></slot>
+      <h1>组件</h1>
+      <p>组件666</p>
+      <slot name="slot2"></slot>
+      {{msg}}
+      <button @click="add">点我</button>
+      {{count}}
+    </div>
+  </template>
+
+  <script src="./vue.js"></script>
+  <script>
+    let tpl = ` <div>
+                  <h1>hello world!</h1>
+                </div>`;
+    new Vue({
+      el: '#app',
+      data: {
+
+      },
+      components: {
+        'com': {
+          template: tpl,
+        },
+        'myCom': {
+          template: '#my-com',
+          props: ['title'],
+          // 组件是复用的，为了让组件间的数据不互相干扰
+          data() {
+            return {
+              msg: '我好开心啊！！！',
+              count: 0
+            }
+          },
+          methods: {
+            add() {
+              this.count++;
+            }
+          },
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

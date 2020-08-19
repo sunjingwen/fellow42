@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>list练习</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="msg" v-on:keyup="search">
+    <button v-on:click="add">添加</button>
+    <ul>
+      <li v-for="(item,index) in showList" v-on:click="change(item)" v-bind:class="{ active:item.isActive }">
+        <span> {{item.content}} </span>
+        <button v-on:click.stop="del(index)">删除</button>
+      </li>
+    </ul>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        msg: '',
+        list: [{
+            content: '123',
+            isActive: false,
+          },
+          {
+            content: '3456',
+            isActive: false,
+          },
+        ],
+        showList: [{
+            content: '123',
+            isActive: false,
+          },
+          {
+            content: '3456',
+            isActive: false,
+          },
+        ]
+        // isActive: false,
+      },
+      methods: {
+        add() {
+          this.list.push({
+            content: this.msg,
+            isActive: false,
+          });
+          this.showList = [...this.list];
+          // 添加成功后清空输入框，方便下次操作
+          this.msg = '';
+        },
+        // 类的切换
+        change(obj) {
+          // this.isActive = !this.isActive;
+          obj.isActive = !obj.isActive;
+        },
+        //把选中的那个元素从数组中移除
+        del(index) {
+          // splice(从第几个开始，删除几个元素)
+          this.list.splice(index, 1);
+          this.showList = [...this.list];
+        },
+        search() {
+          this.showList = this.list.filter((obj, index) => {
+            return obj.content.includes(this.msg)
+          })
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

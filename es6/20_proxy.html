@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>proxy</title>
+</head>
+
+<body>
+  <script>
+    let obj = {
+      name: 'lisi',
+      age: 36
+    }
+    // let p1 = new Proxy(obj, {
+    //   // 在获取值之前做的
+    //   get() {
+    //     console.log('get');
+    //   },
+    //   // 在改变值之前做的，一定要有returen，否则值不会改变
+    //   set() {
+    //     console.log('set');
+    //   }
+    // })
+
+    let p1 = new Proxy(obj, {
+      get(target, key, property) {
+        console.log('get', target, key, property);
+        return target[key];
+      },
+      // 在改变值之前做的，一定要有returen，否则值不会改变
+      set(target, key, value, resiver) {
+        console.log('set', target, key, value, resiver);
+        return target[key] = value;
+      }
+    })
+    console.log(p1);
+
+    p1.name = 'wangwu';
+    console.log(p1.name); //undefined  /wangwu
+    console.log(obj.name);
+    console.log(p1);
+  </script>
+</body>
+
+</html>

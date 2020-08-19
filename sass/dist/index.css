@@ -1,0 +1,173 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 变量的定义 */
+#container {
+  width: 1000px;
+  margin: 0 auto;
+  background: #eecc00;
+  font-size: 20px;
+  border: 1px solid #000000;
+}
+#container .box1 {
+  width: 800px;
+  height: 300px;
+  background: #cccccc;
+  border: 1px solid #000000;
+  /*  #student-list li   */
+}
+#container .box1 a {
+  background: red;
+}
+#container .box1 a:hover {
+  background: blue;
+}
+#container .box1-item {
+  color: green;
+  padding-top: 20px;
+  padding-left: 50px;
+}
+#container .box1 #student-list li {
+  list-style: none;
+  width: 200px;
+  color: #eecc00;
+}
+#container .box2 {
+  width: 200px;
+  height: 400px;
+  padding: 20px;
+  background: red;
+}
+#container .box3 {
+  width: 400px;
+  height: 100px;
+  padding: 50px;
+  background: blue;
+}
+#container .box4, #container .box5 {
+  width: 20px;
+  height: 20px;
+}
+#container .box5 {
+  font-size: 50px;
+}
+#container .box6 {
+  width: 160px;
+  height: 30px;
+  padding: 133.3333333333%;
+}
+#container .box7 {
+  background: #cccccc url("./imgs/bg.jpg");
+}
+#container .box7::after {
+  content: "HELLO WORLD!";
+  font-size: 12;
+  content: 5;
+  content: "hello 666 world!";
+}
+#container .box8 {
+  color: #eecc00;
+  color: #ffe755;
+  color: #887500;
+  color: #eecc00;
+  color: rgba(238, 204, 0, 0.7);
+}
+#container .box9 {
+  border: 1px solid #0000;
+  border: 1px solid red;
+  border: 2;
+  border: blue 1px solid;
+  color: #0000;
+  z-index: 3;
+}
+#container .box10 {
+  color: color1, color2, color3;
+  color: red, green, blue;
+  color: true;
+}
+#container .item1 {
+  width: 100px;
+}
+#container .item2 {
+  width: 200px;
+}
+#container .item3 {
+  width: 300px;
+}
+#container .item4 {
+  width: 400px;
+}
+#container .item5 {
+  width: 500px;
+}
+#container .item6 {
+  width: 600px;
+}
+#container .item7 {
+  width: 700px;
+}
+#container .item8 {
+  width: 800px;
+}
+#container .item9 {
+  width: 900px;
+}
+#container .item1 {
+  width: 100px;
+}
+#container .item2 {
+  width: 200px;
+}
+#container .item3 {
+  width: 300px;
+}
+#container .item4 {
+  width: 400px;
+}
+#container .item5 {
+  width: 500px;
+}
+#container .item6 {
+  width: 600px;
+}
+#container .item7 {
+  width: 700px;
+}
+#container .item8 {
+  width: 800px;
+}
+#container .item9 {
+  width: 900px;
+}
+#container .item10 {
+  width: 1000px;
+}
+#container .item-1px {
+  width: 1px;
+}
+#container .item-solid {
+  width: solid;
+}
+#container .item-#0000 {
+  width: #0000;
+}
+#container .student-1 {
+  padding: 20px;
+}
+#container .student-2 {
+  padding: 20px;
+}
+#container .student-3 {
+  padding: 20px;
+}
+#container .student-4 {
+  padding: 20px;
+}
+#container .box11 {
+  color: blue;
+}
+
+/*# sourceMappingURL=index.css.map */

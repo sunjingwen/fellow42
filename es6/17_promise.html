@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promise</title>
+</head>
+
+<body>
+  <script src="../jQuery/jquery-3.5.1.min.js"></script>
+  <script>
+    // 回调地狱
+    // $.get('./data/a.json', function (res) {
+    //   console.log(res);
+    //   $.get('./data/b.json', function (res) {
+    //     console.log(res);
+    //     $.get('./data/c.json', function (res) {
+    //       console.log(res);
+    //     })
+    //   })
+    // })
+    /*
+      promise then后返回一个新的对象
+
+    */
+    // let pro1 = new Promise(function (resolve, reject) {
+    //   setTimeout(function () {
+    //     resolve('success!!!');
+    //     reject('fail!!!');
+    //     // $.get('./data/c.json', function (res) {
+    //     //   console.log(res);
+    //     //   if (res) {
+    //     //     resolve(res)
+    //     //   } else {
+    //     //     reject(res);
+    //     //   }
+    //     // })
+
+    //   }, 2000)
+    // }).then(function (res) {
+    //   console.log(res);
+    // }).catch(
+    //   function (res) {
+    //     console.log(res)
+    //   }
+    // )
+    // let pro1 = new Promise(function (resolve, reject) {
+    //   setTimeout(function () {
+    //     // resolve('success!!!');
+    //     reject('fail!!!');
+    //   }, 2000)
+    // }).then(function (res) {
+    //   console.log(res);
+    // }, function (res) {
+    //   console.log(res);
+    // })
+
+
+    let p1 = new Promise((resolve, reject) => {
+      console.log('请求1 ing....');
+
+      setTimeout(() => {
+        let flag = true;
+        if (flag) {
+          resolve()
+        } else {
+          reject()
+        }
+      }, 1000);
+
+    }).then(() => {
+      console.log('请求1成功');
+
+      // return new Promise((resolve, reject) => {
+      //   console.log('请求2 ing....');
+
+      //   setTimeout(() => {
+      //     let flag = true;
+      //     if (flag) {
+      //       resolve()
+      //     } else {
+      //       reject()
+      //     }
+      //   }, 1000);
+
+      // })
+    }, () => {
+      console.log('请求1失败');
+      // return new Promise(() => {})
+    }).then(() => {
+      console.log('请求2成功');
+    }).catch(() => {
+      console.log('请求2失败');
+    })
+
+    // function getData(url) {
+    //   return new Promise((resolve, reject) => {
+    //     $.get(url, function (res) {
+    //       resolve(res);
+    //     })
+    //   })
+    // }
+    // getData('./data/a.json').then((res) => {
+    //   console.log(res);
+    //   return getData('./data/b.json');
+    // }).then((res) => {
+    //   console.log(res);
+    //   return getData('./data/c.json');
+    // }).then((res) => {
+    //   console.log(res);
+    // })
+
+
+    // let p1 = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     console.log('p1 ok');
+    //     resolve();
+    //   }, 1000);
+    // })
+    // let p2 = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     console.log('p2 ok');
+    //     resolve();
+    //   }, 500);
+    // })
+    // let p3 = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     console.log('p3 ok');
+    //     resolve();
+    //   }, 2000);
+    // })
+
+    // Promise.all([p1, p2, p3]).then(() => {
+    //   console.log('okokok');
+    // })
+
+    // Promise.race([p1, p2, p3]).then(() => {
+    //   console.log('66666');
+    // })
+  </script>
+</body>
+
+</html>
