@@ -8,6 +8,7 @@ import User from '../views/User.vue'
 import Details from '../views/Details.vue'
 import Error from '../views/Error.vue'
 import Test from '../views/Test.vue'
+import Count from '../views/Count.vue'
 
 Vue.use(VueRouter)
 
@@ -54,18 +55,23 @@ const routes = [
     component: Details
   },
   {
-    path: '/test',
-    // path: '/test/:id/:price',
+    // path: '/test',
+    path: '/test/:id/:price',
     name: 'Test',
     component: Test,
     // redirect: '/'
-    // redirect: '/details/:id/:price',
+    redirect: '/details/:id/:price',
     beforeEnter: (to, from, next) => {
       console.log('to', to);
       console.log('from', from);
       console.log('next', next);
       next()
     }
+  },
+  {
+    path: '/count',
+    name: 'Count',
+    component: Count
   },
   {
     path: '*',

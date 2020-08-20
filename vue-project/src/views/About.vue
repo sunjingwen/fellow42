@@ -3,6 +3,10 @@
     <h1>This is an about page</h1>
 
     <button @click="goForward">前进</button>
+
+
+    <p>count: {{$store.state.count}} </p>
+
   </div>
 </template>
 
@@ -24,7 +28,7 @@ export default {
     console.log("to", to);
     console.log("from", from);
     console.log("next", next);
-    next(false);
+    next();
   }
 };
 </script>

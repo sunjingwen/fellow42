@@ -14,8 +14,9 @@
       <!-- <router-link :to="{ path:'/user' , query:{ name:'lisi' , id:1001  } }">用户详情页</router-link>| -->
       <router-link :to="{ name:'User' , params:{ name:'lisi' , id:1001  } }">用户详情页</router-link>|
       <router-link to="/details/201/16900">课程详情页</router-link>|
-      <router-link to="/test">测试页面</router-link>| 
-      <!-- <router-link to="/test/202/8888">测试页面</router-link>| -->
+      <!-- <router-link to="/test">测试页面</router-link>|  -->
+      <router-link to="/test/202/8888">测试页面</router-link>|
+      <router-link to="/count">vuex</router-link>|
 
     </div>
     <!-- 插槽：决定页面渲染到哪个位置 -->
