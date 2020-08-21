@@ -22,5 +22,6 @@ export default {
 <style lang="scss">
 #container {
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 </style>

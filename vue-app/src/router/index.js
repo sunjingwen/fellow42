@@ -3,14 +3,16 @@ import VueRouter from 'vue-router'
 import Tv from '../views/Tv.vue'
 import Book from '../views/Book.vue'
 import Chat from '../views/Chat.vue'
+import TvDetails from '../views/TvDetails.vue'
 
 Vue.use(VueRouter)
 
-  const routes = [
-    { path: '/', name: 'Tv', component: Tv },
-    { path: '/music', name: 'Music', component: ()=> import('../views/Music.vue') },
-    { path: '/book', name: 'Book', component: Book },
-    { path: '/chat', name: 'Chat', component: Chat },
+const routes = [
+  { path: '/', name: 'Tv', component: Tv },
+  { path: '/music', name: 'Music', component: () => import('../views/Music.vue') },
+  { path: '/book', name: 'Book', component: Book },
+  { path: '/chat', name: 'Chat', component: Chat },
+  { path: '/tvdetails/:id', name: 'TvDetails', component: TvDetails },
 
 ]
 
