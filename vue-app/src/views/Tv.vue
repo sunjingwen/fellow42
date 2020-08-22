@@ -62,7 +62,10 @@ export default {
         fullHeight = htmlDom.offsetHeight; //页面的总高度
         scrollTop = htmlDom.scrollTop; //滚动条距离顶部的距离
         if (scrollTop + deviceHeight > fullHeight - 20) {
-          this.start += 10;
+          // 滚动事件防抖
+          if (this.isFinish) {
+            this.start += 10;
+          }
           if (this.start < 50) {
             this.getData();
           }

@@ -32,6 +32,7 @@ header {
   text-align: center;
   background: #ff0000;
   position: fixed;
+  z-index: 666;
   top: 0;
   left: 0;
   color:#ffffff;

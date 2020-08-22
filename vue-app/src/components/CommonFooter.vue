@@ -38,6 +38,13 @@ export default {
   computed: {
     ...mapState(["curMenu"]),
   },
+  created() {
+    this.menuList.forEach((value) => {
+      if (value.path == this.$route.path) {
+        this.setCurMenu(value);
+      }
+    });
+  },
   methods: {
     ...mapMutations(["setCurMenu"]),
     changeMenu(obj) {
@@ -63,8 +70,8 @@ footer {
   a {
     color: black;
   }
-  .router-link-exact-active{
-    color:#ffffff;
+  .router-link-exact-active {
+    color: #ffffff;
   }
 }
 </style>
