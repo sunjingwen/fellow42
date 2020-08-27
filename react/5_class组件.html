@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>helloWorld</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <!-- 用来编译jsx语法 -->
+  <script src="./browser.min.js"></script>
+  <!-- react的核心库，用来管理组件和状态的 -->
+  <script src="./react.development.js"></script>
+  <!-- 用来渲染组件的， 他依赖于react.js  所以必须在react.js的下面引用 -->
+  <script src="./react-dom.development.js"></script>
+
+  <!-- 必须要加type="text/babel"  ，表示这里面写的是jsx语法 -->
+  <script type="text/babel">
+
+    let root = document.getElementById('app')
+    /* 
+      class组件（有状态组件）：
+        class组件中必须要有render方法
+        class组件中通过this.props来接收引用组件是传递的所有的参数，props本身是一个对象
+        props.children属性来获取调用这个组件时，开始标签和结束标签中之间的内容
+
+    */
+
+    class Com1 extends React.Component{
+      constructor(params) {
+        super(params)
+      
+      }
+      render() {
+        console.log( this.props );
+        return (
+          <div>
+            helloWorld 666
+            <p> 姓名：{this.props.name}  </p>
+            <p>年龄：{ this.props.age } </p>
+            <p>arr: { this.props.arr }</p>
+            { this.props.children }
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(
+      <Com1 name="王五" age={ 66 } arr={ [1,2,3,4,5] } >
+        <div>今天也是要好好学习的一天哦</div>
+      </Com1>
+    , root )
+
+  </script>
+</body>
+
+</html>

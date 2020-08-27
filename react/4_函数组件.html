@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>helloWorld</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <!-- 用来编译jsx语法 -->
+  <script src="./browser.min.js"></script>
+  <!-- react的核心库，用来管理组件和状态的 -->
+  <script src="./react.development.js"></script>
+  <!-- 用来渲染组件的， 他依赖于react.js  所以必须在react.js的下面引用 -->
+  <script src="./react-dom.development.js"></script>
+
+  <!-- 必须要加type="text/babel"  ，表示这里面写的是jsx语法 -->
+  <script type="text/babel">
+
+    let root = document.getElementById('app')
+    
+    /* 
+      函数组件（无状态组件）：
+        组件名称首字母必须要大写
+        通过函数的形参（props）来接收引用组件时传递的所有的参数，props本身是一个对象
+    */
+    function Com1(props) {
+      console.log(props);
+      return (
+        <div>
+          helloWorld
+          <p>姓名：{ props.name } </p>
+          <p>年龄：{ props.age } </p>
+          <p>身高：{ props.info.height } </p>
+          <p>体重：{ props.info.weight } </p>
+        </div>
+        )
+    }
+
+    ReactDOM.render( 
+      <Com1 name="lisi" age={ 20 } info={ {
+        height:'183cm',
+        weight:'70kg'
+      } } ></Com1>
+    , root )
+
+  </script>
+</body>
+
+</html>
