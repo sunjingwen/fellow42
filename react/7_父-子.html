@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>helloWorld</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <!-- 用来编译jsx语法 -->
+  <script src="./browser.min.js"></script>
+  <!-- react的核心库，用来管理组件和状态的 -->
+  <script src="./react.development.js"></script>
+  <!-- 用来渲染组件的， 他依赖于react.js  所以必须在react.js的下面引用 -->
+  <script src="./react-dom.development.js"></script>
+
+  <!-- 必须要加type="text/babel"  ，表示这里面写的是jsx语法 -->
+  <script type="text/babel">
+
+    let root = document.getElementById('app')
+    class Parent extends React.Component{
+      constructor(props) {
+        super(props)
+      
+        this.state = {
+          
+        }
+      
+        this.addFn = this.addFn.bind(this)
+      }
+      addFn(){
+        console.log(this.refs);
+        let child1 = this.refs.child1;
+   
+
+        let inpVal = this.refs.myInput.value
+        child1.add(inpVal);
+
+
+        // 可以实现但是不推荐使用
+        // child1.setState({
+        //   count: child1.state.count + 1
+        // })
+        
+      }
+      render() {
+        return (
+          <div>
+            <h1>父组件</h1>
+            <input type="text" ref="myInput" />
+            <button onClick={this.addFn}>子组件中的count + 1</button>
+            <Child ref="child1" name="a1" />
+            <Child ref="child1" name="a2" />
+          </div>
+        )
+      }     
+    }
+    class Child extends React.Component{
+      constructor(props) {
+        super(props)
+      
+        this.state = {
+          count:0
+        }
+      
+        this.add = this.add.bind(this)
+      }
+      add(num){
+        console.log(num);
+        this.setState({
+          count: this.state.count + num*1
+        })
+      }
+      render() {
+        return (
+          <div>
+            <h3>子组件</h3>
+            <p>count: {this.state.count} </p>
+            <button onClick={ this.add } >点击 count+1</button>
+          </div>
+        )
+      }     
+    }
+
+    ReactDOM.render(
+      <Parent/>
+    , root )
+
+  </script>
+</body>
+
+</html>
