@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>helloWorld</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <!-- 用来编译jsx语法 -->
+  <script src="./browser.min.js"></script>
+  <!-- react的核心库，用来管理组件和状态的 -->
+  <script src="./react.development.js"></script>
+  <!-- 用来渲染组件的， 他依赖于react.js  所以必须在react.js的下面引用 -->
+  <script src="./react-dom.development.js"></script>
+
+  <!-- 必须要加type="text/babel"  ，表示这里面写的是jsx语法 -->
+  <script type="text/babel">
+
+    let root = document.getElementById('app')
+    class Com extends React.Component{
+      constructor(props) {
+        super(props)
+      
+        this.state = {
+         
+        }
+      
+        // this.handleEvent = this.handleEvent.bind(this)
+      }
+      
+      render() {
+        let arr = [1,2,3,4,5]
+        let a1 = []
+        // for循环可以实现，但是不推荐，推荐用map
+        for( let i = 0; i < arr.length; i++ ){
+          a1[i] = <li key={i} > {arr[i]} </li>
+        }
+
+        let list = [
+          {
+            name:'lisl',
+            age:10,
+          },
+          {
+            name:'wangwu',
+            age:14,
+          },
+          {
+            name:'zhangsan',
+            age:70,
+          },
+        ]
+        // let _list = list.map(( value => value  ))
+        // let _list = list.map(( (value) => { return value }  ))
+
+        let _list = list.map((value,index) => (
+          <li key={index}>
+            <p>姓名： { value.name}</p>
+            <p>年龄： { value.age}</p>
+          </li>
+        ))
+
+        return (
+          <div>
+            <ul>
+              {a1}
+            </ul>
+
+            <ul>
+              {_list}
+            </ul>
+
+            <ul>
+            {
+              list.map((value,index) => (
+                <li key={index}> 姓名： { value.name} , 年龄： { value.age}</li>
+              ))
+            }
+            </ul>
+
+
+          </div>
+        )
+      }
+      
+    }
+
+
+
+    ReactDOM.render(
+      
+    <Com/>, root )
+
+  </script>
+</body>
+
+</html>

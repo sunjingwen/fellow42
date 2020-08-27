@@ -59,16 +59,17 @@
         this.add = this.add.bind(this)
       }
       add(){
-        console.log(this.props.parent);
-        // let parent = this.props.parent
+        
 
         this.props.addFn()
 
         // 能实现，但是不推荐这样使用
-        let { parent } = this.props
-        parent.setState({
-          count: parent.state.count + 1
-        })
+        // console.log(this.props.parent);
+        // let parent = this.props.parent
+        // let { parent } = this.props
+        // parent.setState({
+        //   count: parent.state.count + 1
+        // })
       }
       render() {
         return (

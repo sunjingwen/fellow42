@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>helloWorld</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <!-- 用来编译jsx语法 -->
+  <script src="./browser.min.js"></script>
+  <!-- react的核心库，用来管理组件和状态的 -->
+  <script src="./react.development.js"></script>
+  <!-- 用来渲染组件的， 他依赖于react.js  所以必须在react.js的下面引用 -->
+  <script src="./react-dom.development.js"></script>
+
+  <!-- 必须要加type="text/babel"  ，表示这里面写的是jsx语法 -->
+  <script type="text/babel">
+
+    // 条件渲染： if语句  三项表达式（三目运算符） 
+    let root = document.getElementById('app')
+    class Com extends React.Component{
+      constructor(props) {
+        super(props)
+      
+        this.state = {
+          isLogin : false
+        }
+      
+        this.change = this.change.bind(this)
+      }
+      change(){
+        this.setState({
+          isLogin: !this.state.isLogin
+        })
+        console.log(this.state.isLogin);
+      }
+      
+      render() {
+        let tpl;
+        if(this.state.isLogin){
+          tpl =  <p>您好，欢迎来到本网站。。。</p>
+        }else{
+          tpl = <p>请登录</p>            
+        }
+        return (
+          <div>
+            <button onClick={ this.change } >切换登录状态</button>
+            {tpl}
+            {
+              this.state.isLogin ?  <p>您好，欢迎来到本网站。。。</p> :  <p>请登录</p>    
+            }
+          </div>
+        )
+      }
+      
+    }
+
+    ReactDOM.render( <Com/> , root )
+
+  </script>
+</body>
+
+</html>
