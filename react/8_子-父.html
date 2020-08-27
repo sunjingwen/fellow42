@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>helloWorld</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <!-- 用来编译jsx语法 -->
+  <script src="./browser.min.js"></script>
+  <!-- react的核心库，用来管理组件和状态的 -->
+  <script src="./react.development.js"></script>
+  <!-- 用来渲染组件的， 他依赖于react.js  所以必须在react.js的下面引用 -->
+  <script src="./react-dom.development.js"></script>
+
+  <!-- 必须要加type="text/babel"  ，表示这里面写的是jsx语法 -->
+  <script type="text/babel">
+
+    let root = document.getElementById('app')
+    class Parent extends React.Component{
+      constructor(props) {
+        super(props)
+      
+        this.state = {
+          count:0
+        }
+      
+        this.addFn = this.addFn.bind(this)
+      }
+      addFn(){
+        this.setState({
+          count: this.state.count + 1 
+        })
+      }
+
+      render() {
+        return (
+          <div>
+            <h1>父组件</h1>
+            <p>count: {this.state.count}</p>
+            <Child parent={this}  addFn={this.addFn} />
+          </div>
+        )
+      }
+      
+    }
+    class Child extends React.Component{
+      constructor(props) {
+        super(props)
+      
+        this.state = {
+          
+        }
+      
+        this.add = this.add.bind(this)
+      }
+      add(){
+        console.log(this.props.parent);
+        // let parent = this.props.parent
+
+        this.props.addFn()
+
+        // 能实现，但是不推荐这样使用
+        let { parent } = this.props
+        parent.setState({
+          count: parent.state.count + 1
+        })
+      }
+      render() {
+        return (
+          <div>
+            <h3>子组件</h3>
+            <button onClick={this.add} >点击父组件count+1</button>
+          </div>
+        )
+      }    
+    }
+
+
+
+    ReactDOM.render( 
+      
+    <Parent/>, root )
+
+  </script>
+</body>
+
+</html>
