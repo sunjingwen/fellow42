@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>helloWorld</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <!-- 用来编译jsx语法 -->
+  <script src="./browser.min.js"></script>
+  <!-- react的核心库，用来管理组件和状态的 -->
+  <script src="./react.development.js"></script>
+  <!-- 用来渲染组件的， 他依赖于react.js  所以必须在react.js的下面引用 -->
+  <script src="./react-dom.development.js"></script>
+
+  <!-- 必须要加type="text/babel"  ，表示这里面写的是jsx语法 -->
+  <script type="text/babel">
+
+    let root = document.getElementById('app')
+    class Main extends React.Component{
+      constructor(props) {
+        super(props)
+      
+        this.state = {
+          isShow:false,
+        }
+      
+        this.sendMsg = this.sendMsg.bind(this)
+      }
+      sendMsg(){
+        this.setState({
+          isShow: !this.state.isShow
+        })
+      }
+      
+      render() {
+        return (
+          <div>
+            <button onClick={this.sendMsg} >点击获取验证码</button>
+            {
+              this.state.isShow ? <Clock number={5} stop={this.sendMsg} /> : null
+            }
+          </div>
+        )
+      }
+      
+    }
+    class Clock extends React.Component{
+      constructor(props) {
+        super(props)
+      
+        this.state = {
+          num: -1
+        }
+      
+        // this.handleEvent = this.handleEvent.bind(this)
+      
+      }
+
+      componentWillUnmount(){
+        clearInterval(this.timer)
+        console.log('componentWillUnmount');
+      }
+
+     
+      // 会在更新后会被立即调用。首次渲染不会执行此方法。
+      componentDidUpdate(prevProps, prevState){
+        // console.log('componentDidUpdate',prevProps,prevState);
+     
+      }
+   
+      shouldComponentUpdate(nextProps, nextState){
+        // console.log('shouldComponentUpdate',nextProps,nextState);
+        if(nextState.num <= 0){
+          this.props.stop()
+          return false
+        }else{
+          return true
+        }
+      }
+
+      componentDidMount(){
+        console.log('componentDidMount');
+        this.timer = setInterval(() => {
+          console.log('setInterval');
+          this.setState({
+            num: this.state.num -1
+          })
+        }, 1000);
+      }
+
+      
+      render() {
+        console.log('render');
+        return (
+          <div>
+            <p> {this.state.num} 秒以后重新获取验证码</p>
+          </div>
+        )
+      }
+
+      //会在调用 render 方法之前调用，并且在初始挂载及后 续更新时都会被调用。它应返回一个对象来更新 state，如果返回 null 则不更新任何内容 
+      static getDerivedStateFromProps(nextProps, nextState){
+        console.log( 'getDerivedStateFromProps',nextProps, nextState);
+        if(nextState.num  == -1){
+          // console.log(666);
+          return {
+            num: nextProps.number
+          }
+        }else{
+          return null
+        }
+      }
+      
+    }
+
+    ReactDOM.render(<Main/>, root )
+
+  </script>
+</body>
+
+</html>
