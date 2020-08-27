@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>helloWorld</title>
+  <style>
+    .content {
+      background: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <!-- 用来编译jsx语法 -->
+  <script src="./browser.min.js"></script>
+  <!-- react的核心库，用来管理组件和状态的 -->
+  <script src="./react.development.js"></script>
+  <!-- 用来渲染组件的， 他依赖于react.js  所以必须在react.js的下面引用 -->
+  <script src="./react-dom.development.js"></script>
+
+  <!-- 必须要加type="text/babel"  ，表示这里面写的是jsx语法 -->
+
+
+  <!-- 
+    特殊属性：
+      class -> className
+      for -> htmlFor
+    单标签必须闭合
+    必须要有一个唯一的父元素
+  -->
+  <script type="text/babel">
+
+    let root = document.getElementById('app')
+
+    ReactDOM.render(  
+      <div>
+        <div className="content"> helloWorld </div>
+        <label htmlFor="name">姓名：</label>
+        <input id="name" type="text"/>
+      </div>
+    
+    , root )
+
+  </script>
+</body>
+
+</html>
