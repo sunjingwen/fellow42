@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 
-import { Route, Link, Switch } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
+// import { Route, Link, Switch } from 'react-router-dom'
 
 import Home from './components/Home'
 import Course from './components/Course'
