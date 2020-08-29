@@ -8,50 +8,29 @@ class Details extends Component {
       data: {}
     }
   }
-  static getDerivedStateFromProps(nextProps, nextState) {
-    if (nextProps.match.params.id !== this.props.match.params.id || nextState.data.id !== this.state.data.id) {
-      let res = {}
-      // fetch(`/data/course${this.props.match.params.id}.json`)
-      //   .then(response => {
-      //     return response.json()
-      //   })
-      //   .then(res => {
-      //     console.log(res);
-      //     if (res.errno * 1 === 0) {
-      //       res = res.data
-      //     } else {
-      //       alert(res.errmsg)
-      //     }
-      //   }).catch(err => {
-      //     console.log(err);
-      //   })
-      return res
-    } else {
-      return null
-    }
-  }
+
   shouldComponentUpdate(nextProps, nextState) {
     // console.log('props',nextProps.match.params.id !== this.props.match.params.id);
     return nextProps.match.params.id !== this.props.match.params.id || nextState.data.id !== this.state.data.id
 
   }
   componentDidUpdate() {
-    // fetch(`/data/course${this.props.match.params.id}.json`)
-    //   .then(response => {
-    //     return response.json()
-    //   })
-    //   .then(res => {
-    //     console.log(res);
-    //     if (res.errno * 1 === 0) {
-    //       this.setState({
-    //         data: res.data
-    //       })
-    //     } else {
-    //       alert(res.errmsg)
-    //     }
-    //   }).catch(err => {
-    //     console.log(err);
-    //   })
+    fetch(`/data/course${this.props.match.params.id}.json`)
+      .then(response => {
+        return response.json()
+      })
+      .then(res => {
+        console.log(res);
+        if (res.errno * 1 === 0) {
+          this.setState({
+            data: res.data
+          })
+        } else {
+          alert(res.errmsg)
+        }
+      }).catch(err => {
+        console.log(err);
+      })
   }
 
   componentDidMount() {
