@@ -42,7 +42,6 @@ export default class Nav1 extends Component {
               //   <Nav1 {...props} title={obj.title} list={obj.children} ></Nav1>
               // )} />
               <Route key={obj.id} path={`${path}/${obj.path}`} render={(props) => {
-                console.log(props.title);
                 return <Nav1 {...props} title={obj.title} list={obj.children} ></Nav1>
               }} />
             ))

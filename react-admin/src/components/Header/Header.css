@@ -1,0 +1,11 @@
+.header-box {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.user-img {
+  float: right;
+  margin-right: 30px;
+}
