@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=\, initial-scale=1.0">
+  <title>规则</title>
+</head>
+
+<body>
+  <script>
+    /**
+     *  c{1}/只能匹配一个c
+     *  c{2}/则会匹配两个连续的c
+     *  c{m,n}会匹配到m到n个连续的c
+     *  c{n,} >=n
+     */
+    // let reg1 = /c{1}/
+    let reg1 = /c{2}/
+    let str1 = 'ccainiao'
+    console.log(reg1.exec(str1));
+
+    let reg2 = /c{1,3}/
+    let str2 = 'aacc'
+    console.log(reg2.exec(str2));
+
+    /**
+     *  *表示0次或者多次，等同于{0,}
+     *  +表示一次或者多次，等同于{1,}
+     *  c? 和 c{0,1} 是一个意思
+     *  贪心(贪婪)与非贪心(非贪婪)
+     */
+    // let reg3 = /a*/
+    // let reg3 = /a+/
+    // let reg3 = /a?/
+
+    // let reg3 = /a*?/
+    let reg3 = /a??/
+    let str3 = 'aaaaaasdfgdsgxc'
+    console.log(reg3.exec(str3));
+
+    /**
+     *  ^开头,结尾$
+     */
+
+    let reg4 = /^c/;
+    // let str4 = '维生素c';
+    let str4 = 'ccainiao';
+    console.log(reg4.exec(str4));
+
+    let reg5 = /c$/
+    let str5 = '维生素c';
+    console.log(reg5.exec(str5));
+
+    /**
+     *  .会匹配字符串中除了换行符\n之外的所有字符
+     */
+    // let reg6 = /./
+    let reg6 = /.*/
+    let str6 = '维生素c'
+    console.log(reg6.exec(str6));
+
+    /**
+     *  b|c表示，匹配b或者c
+     */
+    // let reg7 = /b|c/
+    // let reg7 = /^b|c.+/      //  |的优先级高
+    let reg7 = /^(b|c).+/
+    let str7 = 'blueidea'
+    console.log(reg7.exec(str7));
+
+    /**
+     *  [abc]表示a或者b或者c中的任意一个字符
+     *  反字符集合[^abc]
+     */
+    // let reg8 = /[a-z]/
+    // let reg8 = /^[abc]/
+    // let reg8 = /^[a-zA-Z_][a-zA-Z0-9]+/
+    let reg8 = /^[A-z][A-z0-9]+/
+    let str8 = '_test'
+    console.log(reg8.exec(str8));
+
+    let reg9 = /[^abc]/
+    let str9 = 'blueidea'
+    console.log(reg9.exec(str9));
+
+    /**
+     *  边界与非边界
+     *  /\bc/ 左边界是c
+     *  /c\b/ 右边界是c
+     *  \B告诉正则，只匹配非边界的c
+     */
+
+    // let reg10 = /\bc/
+    // let reg10 = /c\b/
+    let reg10 = /c\B/
+    let str10 = 'ctc'
+    console.log(reg10.exec(str10));
+
+    /**
+     *  数字与非数字
+     *  \d表示数字 [0-9]
+     *  \D表示非数字 [^0-9]
+     */
+
+    /**
+     *  空白
+     *  \n匹配换行符
+     *  \s匹配单个空格 等同于[\f\n\r\t\v] 
+     * 
+     *  \f匹配换页符
+     *  \r匹配回车 
+     *  \t匹配制表符 
+     *  \v匹配垂直制表符
+     * 
+     *  \S表示非空格字符
+     */
+    let reg11 = /\s.+/
+    let str11 = 'This          is a test String.'
+    console.log(reg11.exec(str11));
+
+    /**
+     *  \w表示单词字符 = [a-zA-Z0-9_]
+     *  \W表示非单词字符 = [^a-zA-Z0-9_]
+     */
+
+    /**
+     *  反向引用
+     */
+    // let reg12 = /\w/
+    // let reg12 = /(\w)(\w)/
+    // “\1”是等同于“第1个括号匹配的内容”，而不是“第一个括号的内容”
+    // let reg12 = /(\w)\1/ // /(\w)b/
+    let reg12 = /(\w)(\w)\2\1/
+    // let str12 = 'blueidea'
+    let str12 = 'woow'
+    console.log(reg12.exec(str12));
+
+    console.clear()
+    // let reg13 = /^(b|c).+/
+    // let reg13 = /^(b|c)\1/
+    // let reg13 = /^(?:b|c).+/
+    let reg13 = /^(?:b|c)\1/
+    let str13 = 'bbs.blueidea.com'
+    console.log(reg13.exec(str13));
+
+    /**
+     *  全局匹配，修饰符g
+     *  不区分大小写，修饰符i
+     *  行首行尾，修饰符m
+     */
+    // let reg14 = /b/
+    let reg14 = /b/g
+    let str14 = 'bbs.blueidea.com'
+    console.log(reg14.lastIndex);
+    console.log(reg14.exec(str14));
+    console.log(reg14.lastIndex);
+    console.log(reg14.exec(str14));
+    console.log(reg14.lastIndex);
+    console.log(reg14.exec(str14));
+    console.log(reg14.lastIndex);
+    console.log(reg14.exec(str14));
+
+    /**
+     *  使用字符串的方法执行正则表达式
+     *  search
+     *  match
+     *  replace
+     *  split
+     */
+     console.clear()
+     let str = 'hello world'
+    //  console.log(str.search('o'));
+     console.log(str.search(/o/));
+     console.log(str.match(/o/g));
+     console.log(str.replace(/o/g,'666'));
+     console.log(str.split('l'));
+     console.log(str.split(/\s/));
+
+
+  </script>
+</body>
+
+</html>
