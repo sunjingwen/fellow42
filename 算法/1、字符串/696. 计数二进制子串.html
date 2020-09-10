@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 找符合规则的字符串
+    // function fn(str) {
+    //   let i = str.match(/^(0+|1+)/)[0] //00
+    //   let j = (i[0] ^ 1).toString().repeat(i.length) //异或  0^1=1 1^1=0  11
+    //   let str66 = 'la'
+    //   console.log(str66.repeat(5));
+    //   console.log(i[0] ^ 1);
+    //   let reg = new RegExp(`^(${i}${j})`)  
+    //   if (reg.test(str)) {
+    //     // return i + j
+    //     return RegExp.$1
+    //   } else {
+    //     return ''
+    //   }
+    // }
+    // var countBinarySubstrings = function (s) {
+    //   // 截取s 把截取后的s传给fn
+    //   let res = []
+    //   for (let i = 0; i < s.length-1; i++) {
+    //     let str1 = fn(s.slice(i))
+    //     if (str1) {
+    //       res.push(str1)
+    //     }
+    //   }
+    //   console.log(res);
+    //   return res.length
+    // };
+    var countBinarySubstrings = function (s) {
+      // 截取s 把截取后的s传给fn
+      let counts = s.match(/0+|1+/g)
+      console.log(counts); 
+      let res = 0
+      for (let i = 1; i < counts.length; i++) {
+        res += Math.min(counts[i].length, counts[i - 1].length)
+      }
+      return res
+    };
+    console.log(countBinarySubstrings("00110011"));
+  </script>
+</body>
+
+</html>

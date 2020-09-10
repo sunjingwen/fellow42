@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var reverseWords = function (s) {
+      // let arr = s.split(' ')
+      // let arr2 = arr.map((item) => {
+      //   return item.split('').reverse().join('');
+      // })
+      // return arr2.join(' ')
+
+      return s.split(' ').map((item) => {
+        return item.split('').reverse().join('');
+      }).join(' ')
+    };
+    console.log(reverseWords("Let's take LeetCode contest"));
+  </script>
+</body>
+
+</html>
