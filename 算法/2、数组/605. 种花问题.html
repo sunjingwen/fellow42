@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var canPlaceFlowers = function (flowerbed, n) {
+      let count = 0
+      for (let i = 0; i < flowerbed.length; i++) {
+        if (flowerbed[i] === 0 && flowerbed[i - 1] !== 1 && flowerbed[i + 1] !== 1) {
+          // i这个位置能种花,但是如果i种花了，那i后面的位置就一定不能种了，所以不用判断直接跳过，判断下下个位置
+          count++
+          i++
+        }
+      }
+      return count >= n
+    };
+    console.log(canPlaceFlowers([1, 0, 0, 0, 0, 1], 1));
+  </script>
+</body>
+
+</html>

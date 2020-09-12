@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let arr1 = ['', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
+    // 处理字母的排列组合
+
+    function fn(arr) { //['abc','def', 'ghi' ]
+      let res = []
+      for (let i = 0; i < arr[0].length; i++) { //'abc'
+        for (let j = 0; j < arr[1].length; j++) { //'def'
+          res.push(arr[0][i] + arr[1][j])
+        }
+      }
+      arr.splice(0, 2, res) //[["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"], 'ghi' ]
+      if (arr.length > 1) {
+        fn(arr)
+      }
+      console.log(arr);
+      // return res
+      //["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"] 【不能return res，因为会嵌套return，最终返回的是第一次的结果】
+      return arr[0]
+    }
+    var letterCombinations = function (digits) { //'23'
+      let digitsArr = digits.split('') //[2,3]
+      let letters = []; //['abc,'def]
+      digitsArr.forEach(element => {
+        letters.push(arr1[element])
+      });
+      if (letters.length > 1) {
+        return fn(letters)
+      } else { //length = 1   ['abc'] =>['a','b','c']
+        if (letters[0]) {
+          return letters[0].split('')
+        } else {
+          return []
+        }
+      }
+    };
+    console.log(letterCombinations('2345'));
+  </script>
+  <!-- <script>
+    // 函数的定义
+    function fn(params) {
+      let res = []
+      for (let index = 0; index < array.length; index++) {
+        // .....
+        if (true) {
+
+          fn()
+
+        }
+
+      }
+      return res
+
+    }
+    // 实际执行的代码 //假设只递归了一次
+    let res = []
+    for (let index = 0; index < array.length; index++) {
+      // .....
+      if (true) {
+
+        let res = []
+        for (let index = 0; index < array.length; index++) {
+          // .....
+        }
+        return res
+
+      }
+      // ....
+    }
+    return res
+    fn()
+  </script> -->
+</body>
+
+</html>

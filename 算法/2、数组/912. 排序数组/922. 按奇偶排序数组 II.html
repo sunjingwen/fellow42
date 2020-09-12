@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var sortArrayByParityII = function (A) {
+      let res = [];
+      let odd = 1;
+      let even = 0;
+      A.forEach(element => {
+        if (element % 2 == 0) {
+          res[even] = element;
+          even += 2
+        } else {
+          res[odd] = element;
+          odd += 2
+        }
+      });
+      return res
+    };
+    console.log(sortArrayByParityII([4, 2, 5, 7]));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 方法一：时间复杂度不符合题目要求  */
+    // var firstMissingPositive = function (nums) {
+    //   let res = 1
+    //   // for (let i = 0; i < nums.length; i++) {
+    //   //   if (nums.includes(res)) {
+    //   //     res++
+    //   //   }
+    //   // }
+    //   while (nums.includes(res)) {
+    //     res++
+    //   }
+    //   return res
+    // };
+
+    /* 方法二：换位置 */
+    var firstMissingPositive = function (nums) {
+      // 1、重新排序，让 arr[i] = i+1 【交换元素的位置，使他在它应该在的位置】
+      /*      
+        i = 0[-1, 4, 3, 1] 1
+        i = 1[-1, 1, 3, 4]  2
+      */
+      for (let i = 0; i < nums.length; i++) {
+        while (nums[i] >= 1 && nums[i] <= nums.length && nums[nums[i] - 1] != nums[i]) {
+          const element = nums[i];
+          [nums[i], nums[element - 1]] = [nums[element - 1], nums[i]];
+          console.log(nums);
+        }
+      }
+      // 2、循环数组中的所有元素，比较输出
+      for (let i = 0; i < nums.length; i++) {
+        if (nums[i] != i + 1) {
+          return i + 1
+        }
+      }
+      return nums.length + 1 // [1,2,3,4]
+    };
+    /* 方法三： */
+    // var firstMissingPositive = function (nums) {
+
+    // };
+    console.log(firstMissingPositive([3, 4, -1, 1]));
+  </script>
+</body>
+
+</html>

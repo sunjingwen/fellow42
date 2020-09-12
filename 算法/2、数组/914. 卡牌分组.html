@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 求最大公约数
+    /*
+      let max = math.min(a,b)
+      let res = 1
+      for (let i = 2; i <= max; i++) {
+        if (a % i == 0 && b % i == 0) {
+          res = i
+        }
+      }
+      return res
+    */
+    /* a,b (5,2)
+       a =  c*b  + d   // d = a%b    5%2 = 2...1  
+        d == 0; b
+        d > 0; b = e * d + g  // g = b%d  
+                g == 0 ; d    a = c*e*d + d = (c*e+1)d
+    */
+    function fn(a, b) {
+      if (a % b == 0) {
+        return b
+      } else {
+        return fn(b, a % b)
+      }
+    }
+    console.log(fn(2, 4, 8));
+    var hasGroupsSizeX = function (deck) {
+      // 得到都是个数的数组 [2,2,2,2]
+      let obj = {}
+      for (let num of deck) {
+        obj[num] = obj[num] ? ++obj[num] : 1
+      }
+      console.log(obj);
+      let arr = Object.values(obj); //[2,3,2,2] 
+      console.log(arr);
+      let res = arr[0]
+      return arr.every(i => (res = fn(res, i)) > 1)
+    };
+    console.log(hasGroupsSizeX([1, 2, 3, 4, 4, 3, 2, 1]));
+  </script>
+</body>
+
+</html>

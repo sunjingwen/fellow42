@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>冒泡</title>
+</head>
+
+<body>
+  <p>冒泡排序时针对相邻元素之间的比较，可以将大的数慢慢“沉底”(数组尾部)</p>
+  <script>
+    var sortArray = function (nums) {
+      // 从后往前去确定元素
+      for (let i = nums.length - 1; i >= 0; i--) {
+        //从前往后，相邻两个元素比较、交换 
+        for (let j = 0; j < i; j++) {
+          if (nums[j] > nums[j + 1]) {
+            [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]];
+          }
+        }
+      }
+      return nums
+    };
+    console.log(sortArray([5, 1, 1, 2, 0, 0]));
+  </script>
+</body>
+
+</html>

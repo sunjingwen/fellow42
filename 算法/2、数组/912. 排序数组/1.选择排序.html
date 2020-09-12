@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>选择排序</title>
+</head>
+
+<body>
+  <p> 从起始位置开始往后遍历，找到数组中剩余最小的最小的元素与起始位置元素交换， 起始位置+1 </p>
+  <a
+    href="https://leetcode-cn.com/problems/sort-an-array/solution/python-shi-xian-de-shi-da-jing-dian-pai-xu-suan-fa/">排序图解及总结</a>
+
+  <script>
+    var sortArray = function (nums) {
+      // 从头往后去确定元素
+      for (let i = 0; i < nums.length; i++) {
+        let minIndex = i
+        // 循环剩余的元素
+        for (let j = i + 1; j < nums.length; j++) {
+          // 判断大小，交换位置
+          if (nums[minIndex] > nums[j]) {
+            minIndex = j
+          }
+        }
+        [nums[i], nums[minIndex]] = [nums[minIndex], nums[i]];
+      }
+      return nums
+    };
+    console.log(sortArray([5, 1, 1, 2, 0, 0]));
+  </script>
+</body>
+
+</html>
