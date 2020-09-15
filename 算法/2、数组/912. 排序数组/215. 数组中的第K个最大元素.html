@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //  nums[nums.length-k]
+    // var findKthLargest = function (nums, k) {
+    //   // sort()默认是字典排序  
+    //   // nums.sort((a, b) => a - b) //升序
+    //   nums.sort((a, b) => b - a) //降序
+    //   console.log(nums);
+    //   // return nums[nums.length - k] //升序
+    //   return nums[k - 1] //降序
+    // };
+
+    var findKthLargest = function (nums, k) {
+      // 从后往前去确定元素
+      for (let i = nums.length - 1; i >= nums.length - k; i--) {
+        //从前往后，相邻两个元素比较、交换 
+        for (let j = 0; j < i; j++) {
+          if (nums[j] > nums[j + 1]) {
+            [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]];
+          }
+        }
+      }
+      return nums[nums.length - k]
+    };
+    console.log(findKthLargest([3, 2, 1, 5, 6, 4], 2));
+  </script>
+</body>
+
+</html>

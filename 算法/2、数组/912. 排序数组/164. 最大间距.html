@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <a
+    href="https://leetcode-cn.com/problems/maximum-gap/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by--39/">思路解释</a>
+  <script>
+    // 不符合时间复杂度
+    var maximumGap = function (nums) {
+      nums.sort((a, b) => a - b)
+      let max = 0
+      for (let i = 0; i < nums.length - 1; i++) {
+        if (nums[i + 1] - nums[i] > max)
+          max = nums[i + 1] - nums[i]
+      }
+      return max
+      console.log(nums);
+    }
+    // 符合时间复杂度的方法
+    // 思路解释：https://leetcode-cn.com/problems/maximum-gap/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by--39/
+    var maximumGap = function (nums) {
+      let n = nums.length;
+      if (nums.length < 2) {
+        return 0
+      }
+      let min = Math.min(...nums);
+      let max = Math.max(...nums);
+      if (max - min == 0) return 0;
+      let gap = Math.ceil((max - min) / (n - 1)); //有n-1个桶，桶内的最大间隙是gap
+      //每个箱子里数字的最小值和最大值
+      let bucketsMin = new Array(n - 1).fill(Number.MAX_SAFE_INTEGER);
+      let bucketsMax = new Array(n - 1).fill(-1);
+      for (let i = 0; i < n; i++) {
+        if (nums[i] == min || nums[i] == max) continue;
+        // 判断当前元素应该放进哪个桶里面去
+        let idx = parseInt((nums[i] - min) / gap);
+        // 更新当前数字所在箱子的最小值和最大值
+        bucketsMin[idx] = Math.min(nums[i], bucketsMin[idx]);
+        bucketsMax[idx] = Math.max(nums[i], bucketsMax[idx]);
+      }
+      let maxGap = 0;
+      //min 看做第 -1 个箱子的最大值
+      let pre = min;
+      for (let i = 0; i < n - 1; i++) {
+        //最大值是 -1 说明箱子中没有数字，直接跳过
+        if (bucketsMax[i] == -1) continue;
+        //当前箱子的最小值减去前一个箱子的最大值
+        maxGap = Math.max(maxGap, bucketsMin[i] - pre);
+        pre = bucketsMax[i]; //更新前一个箱子的最大值
+      }
+      //最大值可能处于边界，不在箱子中，需要单独考虑 [1,10000000]
+      maxGap = Math.max(maxGap, max - pre);
+      console.log(bucketsMin, bucketsMax);
+      return maxGap;
+    };
+    console.log(maximumGap([3, 6, 9, 1]));
+  </script>
+</body>
+
+</html>
