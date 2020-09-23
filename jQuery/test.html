@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    th {
+      width: 100px;
+      margin: 0 20px;
+    }
+
+    table {
+      border: 0;
+      border-collapse: collapse;
+    }
+
+    .even {
+      background: #FFF38F;
+    }
+
+    .odd {
+      background: #FFFFEE;
+    }
+
+    .active {
+      background: #FF6500;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <thead>
+      <th>选项</th>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>暂住地</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="radio" name="choice" value="" /></td>
+        <td>张山</td>
+        <td>男</td>
+        <td>浙江宁波</td>
+      </tr>
+      <tr>
+        <td><input type="radio" name="choice" value="" /></td>
+        <td>李四</td>
+        <td>女</td>
+        <td>浙江杭州</td>
+      </tr>
+      <tr>
+        <td><input type="radio" name="choice" value="" /></td>
+        <td>王五</td>
+        <td>男</td>
+        <td>湖南长沙</td>
+      </tr>
+      <tr>
+        <td><input type="radio" name="choice" value="" /></td>
+        <td>找六</td>
+        <td>男</td>
+        <td>浙江温州</td>
+      </tr>
+      <tr>
+        <td><input type="radio" name="choice" value="" /></td>
+        <td>Rain</td>
+        <td>男</td>
+        <td>浙江杭州</td>
+      </tr>
+      <tr>
+        <td><input type="radio" name="choice" value="" /></td>
+        <td>MAXMAN</td>
+        <td>女</td>
+        <td>浙江杭州</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script src="./jquery-3.5.1.min.js"></script>
+  <script>
+    /* $("tbody>tr:even").addClass("even");
+    $("tbody>tr:odd").addClass("odd");
+    $("tbody>tr").on("click", function () {
+      $(this).addClass("active").siblings().removeClass("active").find('input').attr('checked', false);
+      $(this).find("input").attr("checked", true);
+    }); */
+
+    var $tr = $("tbody>tr");
+    $tr.filter(':even').addClass("even");
+    $tr.filter(':odd').addClass("odd");
+    $tr.on("click", function () {
+      $(this).addClass("active").siblings().removeClass("active").find('input').attr('checked', false);
+      $(this).find("input").attr("checked", true);
+    });
+
+
+  </script>
+</body>
+
+</html>
