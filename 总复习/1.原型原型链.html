@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 创建对象有哪些方式
+        // 1. new Object();
+        var o1 = new Object();
+        o1.name = 'lisi';
+        o1.age = 12;
+        o1.sayHello = function(){
+            console.log('...');
+        };
+        // 2. {} 对象直接量
+        var o2 = {
+            name: 'lisi',
+            age: 12,
+            sayHello: function(){
+                console.log('...');
+            }
+        };
+        // console.log(o1 == o2);
+        // 3. Object.create() 
+        // 方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__。
+        // 创建了新对象o3，使用o1来提供o3的__proto__。
+        var o3 = Object.create(o1);
+        // o3.__proto__ = o1;
+        o1.name = 'wangwu';
+        // console.log(o3.name); //=> wangwu
+
+        o3.name = 'tianqi';
+        // console.log(o3.name); //=> tianqi
+
+        var o4 = {};
+        var o5 = Object.create({});
+        // o5.__proto__ = {}
+        console.log(o4); //=> {}
+        console.log(o5); //=> {}
+
+        // 原型：
+        // ①所有对象都有一个__proto__(隐式原型)属性，属性值是一个普通的对象
+        // ②所有函数都有一个prototype(原型)属性，属性值是一个普通的对象
+        // ③所有对象的__proto__属性指向它构造函数的prototype
+
+        function Person(name){
+            this.name = name;
+            this.brother = {
+                name: 'xiaoli'
+            };
+        }
+        Person.prototype.age = 12;
+       /*  Person.prototype.brother = {
+            name: 'xiaoli'
+        }; */
+
+        var p1 = new Person("xiaohua");
+        // console.log(p1.name, p1.age);
+        /* p1.age = 23;
+        console.log(p1);
+        console.log(p1.age); */
+
+        p1.brother.name = 'haha';
+        // p1.__proto__.brother = 'haha';
+
+        var p2 = new Person('john');
+        console.log(p2.brother.name);
+
+
+        // console.log(  p1.__proto__  ==   Person.prototype );
+
+        // p1.name => p1.__proto__ => p1.__proto__.__proto__
+        
+
+        // 原型链：
+        // 当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，
+        // 则会去它的__proto__隐式原型上查找，即它的构造函数的prototype，
+        // 如果还没有找到就会再在构造函数的prototype的__proto__中查找，
+        // 这样一层一层向上查找就会形成一个链式结构，我们称为原型链。
+
+
+
+
+
+    </script>
+</body>
+</html>

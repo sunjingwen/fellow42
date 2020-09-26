@@ -1,0 +1,87 @@
+<ul id="ul1">
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+</ul>
+
+<script>
+
+    function test() {
+        let obj1 = {
+            name: 'lisi',
+            code: () => {
+                console.log(this);
+            }
+        }
+        obj1.code();
+    }
+
+    // test();
+
+    var obj2 = {
+        code2: function () {
+            let obj1 = {
+                name: 'lisi',
+                code: () => {
+                    console.log(this);
+                }
+            }
+            obj1.code();
+        }
+    }
+
+    // obj2.code2();
+
+    var aLi = document.getElementsByTagName('li');
+
+    for (var i = 0; i < 3; i++) {
+        (function (ii) {
+            // var index = i;
+            aLi[i].onclick = function () {
+                console.log(ii);
+            }
+        })();
+    }
+
+    var obj1 = {
+        name: 'lisi',
+        age: 23,
+        brother: {
+            name: 'lixx'
+        }
+    };
+
+    // var obj2 = obj1;
+
+   /*  obj2.name = 'wangwu';
+
+    console.log(obj1.name); */
+
+    function clone(obj){
+
+        var o = obj.constructor == Array?[]:{};
+
+        for(let p in obj){
+            o[p] = obj[p];
+            // o['brother'] = obj['brother']
+            if(typeof obj[p] === 'object'){
+                o[p] = clone(obj[p]);
+            }
+        }
+
+        return o;
+    }
+
+    var obj2 = clone(obj1);
+    obj2.name = 'wangwu';
+    obj2.brother.name = 'zhaoliu';
+    console.log(obj1);
+
+    var arr1 = [1,2, [3,4]];
+
+    var arr2 = clone(arr1);
+    arr2[2] = [5,6]
+
+    console.log(arr1);
+
+</script>
