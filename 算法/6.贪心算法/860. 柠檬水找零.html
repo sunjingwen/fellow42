@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var lemonadeChange = function (bills) {
+      let m5 = 0;
+      let m10 = 0;
+      let m20 = 0;
+      for (const m of bills) {
+        switch (m) {
+          case 5:
+            m5++
+            break;
+          case 10:
+            m5--
+            m10++
+            break;
+          case 20:
+            if (m10 > 0) {
+              m10--;
+              m5--
+            } else {
+              m5 -= 3
+            }
+            break;
+          default:
+            console.log('m', m);
+            break;
+        }
+        if (m5 < 0) {
+          return false
+        }
+      }
+      return true
+    };
+    console.log(lemonadeChange([5, 5, 5, 10, 5, 5, 10, 20, 20, 20]));
+  </script>
+</body>
+
+</html>

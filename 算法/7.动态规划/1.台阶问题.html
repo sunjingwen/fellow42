@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h3>动态规划：动态规划算法是通过拆分问题，定义问题的状态和状态之间的关系，使得问题能够递推（或者说分治）的方式去解决</h3>
+  <p>
+    一共有n个台阶，一次只能上一层，或者两层，一共有多少种方法
+  </p>
+  <script>
+    /* 
+      1 -- 1                      --1
+      2 -- 11,2                   --2
+      3 -- 111,12,21              --3
+      4 -- 1111,121,211,112,22    --5
+      5 -- 3+5  
+    */
+    function fn(n) {
+      // let n1 = 1;
+      // let n2 = 2;
+      // let res = 0;
+      // for (let i = 3; i <= n; i++) {
+      //   res = n1 + n2;
+      //   n1 = n2;
+      //   n2 = res;
+      // }
+      // return res;
+      if (n == 1) {
+        return 1
+      } else if (n == 2) {
+        return 2
+      } else {
+        return fn(n - 1) + fn(n - 2)
+      }
+    }
+    console.log(fn(5));
+  </script>
+</body>
+
+</html>
