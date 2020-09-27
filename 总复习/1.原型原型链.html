@@ -38,8 +38,8 @@
         var o4 = {};
         var o5 = Object.create({});
         // o5.__proto__ = {}
-        console.log(o4); //=> {}
-        console.log(o5); //=> {}
+        // console.log(o4); //=> {}
+        // console.log(o5); //=> {}
 
         // 原型：
         // ①所有对象都有一个__proto__(隐式原型)属性，属性值是一个普通的对象
@@ -67,7 +67,7 @@
         // p1.__proto__.brother = 'haha';
 
         var p2 = new Person('john');
-        console.log(p2.brother.name);
+        // console.log(p2.brother.name);
 
 
         // console.log(  p1.__proto__  ==   Person.prototype );
@@ -80,6 +80,27 @@
         // 则会去它的__proto__隐式原型上查找，即它的构造函数的prototype，
         // 如果还没有找到就会再在构造函数的prototype的__proto__中查找，
         // 这样一层一层向上查找就会形成一个链式结构，我们称为原型链。
+
+
+        /* var o6 = {
+            name: 'bob',
+            age: 18
+        }; */
+
+        var o6 = new Object();
+        o6.name = 'bob';
+        o6.age = 18;
+
+        /* Object.prototype.sayHello = function(){
+
+        }; */
+
+        var o7 = Object.create(o6);
+        o7.name = 'john';
+
+        var o8 = Object.create(o7);
+        
+        console.log(o8);
 
 
 
