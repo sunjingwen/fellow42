@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    什么是闭包：
+      函数嵌套函数
+      内部函数可以引用外部函数的变量或参数
+    闭包的好处、应用：
+      希望一个变量长期驻扎在内存中
+      避免全局变量的污染（代码模块化）
+    闭包的用法：
+      代码模块化，避免全局污染
+      循环中找到对应元素的索引，不需要加索引了
+    
+   -->
+  <ul id="ul">
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+  </ul>
+  <script>
+    function fn1(val) {
+      var a = 10;
+
+      return function fn2(params) {
+        a++;
+        console.log(a, val);
+      }
+    }
+    // var f = fn1('hello') //fn2
+    var f = (function fn1(val) {
+      var a = 10;
+      return function fn2(params) {
+        a++;
+        console.log(a, val);
+      }
+    })('world')
+    f()
+    f()
+    f()
+
+    var aLi = document.getElementsByTagName('li');
+    for (var i = 0; i < aLi.length; i++) {
+      (function (i) {
+        aLi[i].onclick = function () {
+          console.log(i);
+        }
+      })(i)
+    }
+  </script>
+</body>
+
+</html>

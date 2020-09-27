@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>
+    函数节流：一个函数执行一次后，只有大于设定的执行周期后才执行第二次，有个需要频发触发的函数，出于性能优化角度，在规定时间内，只让函数触发第一生效，后面不生效
+  </p>
+  <script>
+    // document.onmousemove = function (params) {
+    //   console.log(Math.random());
+    // }
+    function throttle(fn, delay) {
+      var startTime = 0
+      return function () {
+        var nowTime = Date.now()
+        if (nowTime - startTime > delay) {
+          fn.call(this)
+          startTime = nowTime
+        }
+      }
+    }
+    document.onmousemove = throttle(function (params) {
+      console.log(Math.random());
+      console.log(this);
+    }, 1000)
+  </script>
+</body>
+
+</html>

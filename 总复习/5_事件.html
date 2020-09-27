@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #div1 {
+      width: 200px;
+      height: 200px;
+      background: rgb(207, 32, 32);
+    }
+
+    #div2 {
+      width: 100px;
+      height: 100px;
+      background: rgb(32, 207, 146);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="div1">111
+    <div id="div2">222</div>
+  </div>
+  <a href="http:www.baidu.com" id="baidu">baidu</a>
+  <ul id="ul">
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+  </ul>
+  <button id="btn">click</button>
+  <!-- 
+    事件对象，事件处理函数，事件源
+    事件冒泡（从里往外触发事件）
+    阻止默认行为
+    事件捕获（从外往里触发事件）
+    事件委托
+   -->
+  <script>
+    var oDiv1 = document.getElementById('div1');
+    var oDiv2 = document.getElementById('div2');
+    // oDiv1.onclick = function (e) {
+    //   console.log('1.1.1.1.1');
+    //   console.log('事件源1', e.target); //谁触发的事件
+    //   console.log('this1', this); //对当前对象的引用
+    // }
+    // oDiv2.onclick = function (e) {
+    //   console.log('2.2.2.2.2');
+    //   console.log('事件源2', e.target);
+    //   console.log('this2', this);
+    //   // 阻止事件冒泡
+    //   e.stopPropagation();
+    //   e.cancelBubble = true //ie
+    // }
+
+    var oBaidu = document.getElementById('baidu')
+    oBaidu.onclick = function (e) {
+      // 阻止默认行为
+      // e.preventDefault()
+      // e.returnValue = false;//ie
+      return false
+    }
+    // 在同时有事件冒泡和捕获的时候，先捕获再冒泡（先从外往里，再从里往外）
+    oDiv1.addEventListener('click', function () {
+      console.log('div1 捕获');
+    }, true)
+    oDiv2.addEventListener('click', function () {
+      console.log('div2 捕获');
+    }, true)
+    oDiv1.addEventListener('click', function () {
+      console.log('div1 冒泡');
+    }, false)
+    oDiv2.addEventListener('click', function () {
+      console.log('div2 冒泡');
+    }, false)
+
+    var aLi = document.getElementsByTagName('li');
+    // for (let i = 0; i < aLi.length; i++) {
+    //   aLi[i].onclick = function () {
+    //     console.log(this.innerHTML);
+    //   }
+    // }
+    var oBtn = document.getElementById('btn')
+    var oUl = document.getElementById('ul')
+    oBtn.onclick = function () {
+      var oLi = document.createElement('li');
+      oLi.innerHTML = Math.random()
+      oUl.appendChild(oLi)
+    }
+
+    oUl.onclick = function (e) {
+      if (e.target.tagName == 'LI') {
+        console.log(e.target.innerHTML);
+      }
+    }
+  </script>
+</body>
+
+</html>

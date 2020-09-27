@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 创建 XMLHttpRequest 对象
+    var xmlhttp;
+    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    // 向服务器发送请求( 请求方式， url ，是否异步 )
+    xmlhttp.open("GET", "demo_get.asp", true);
+    xmlhttp.send();
+
+    xmlhttp.open("POST", "ajax_test.asp", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("fname=Bill&lname=Gates");
+
+    // 服务器响应
+    /* 
+      存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
+        0: 请求未初始化
+        1: 服务器连接已建立
+        2: 请求已接收
+        3: 请求处理中
+        4: 请求已完成，且响应已就绪
+    */
+    /* 
+        200 （ok）成功 一切正常
+        500  服务器方面的问题
+        503  服务不可用
+        404  找不到资源
+        301  永久重定向
+        302  临时重定向
+        304  缓存
+     */
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        console.log(xmlhttp.responseText);
+      }
+    }
+  </script>
+</body>
+
+</html>

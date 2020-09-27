@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>一个需要频繁触发的函数，在规定时间内，只让最后一次生效，前面的不生效，比如搜索</p>
+  <button id="btn">click</button>
+  <script>
+    var oBtn = document.getElementById('btn')
+    // oBtn.onclick = function () {
+    //   console.log(Date.now());
+    // }
+    function debounce(fn, delay) {
+      var timer = null
+      return function () {
+        clearTimeout(timer)
+        timer = setTimeout(function () {
+          fn.apply(this)
+        }.bind(this), delay)
+      }
+    }
+    oBtn.onclick = debounce(function () {
+      console.log(Date.now());
+      console.log(this);
+    }, 300)
+  </script>
+</body>
+
+</html>

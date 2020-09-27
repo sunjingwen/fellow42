@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="ul">
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+  </ul>
+  <script>
+    let c = 10;
+
+    // 暂时性死区：不能在变量声明前调用该变量
+    function fn1() {
+      // console.log(c); //报错
+      let c = 20;
+      console.log(c); //
+    }
+    fn1()
+
+    // 箭头函数：箭头函数的this指向父作用域的this（声明时的this，也就是没有this），普通函数中的this指向的是调用时的this【箭头函数不能作为构造函数，不能用arguments】
+    var aLi = document.getElementsByTagName('li');
+    for (let i = 0; i < aLi.length; i++) {
+      aLi[i].onclick = function () {
+        console.log(i);
+        setTimeout(() => {
+          console.log(this);
+        }, 1000)
+      }
+    }
+    let a = (x, y, z, ...rest) => {
+      // console.log(arguments);
+      console.log(rest);
+    }
+    a(1, 2, 3, 4, 5)
+  </script>
+</body>
+
+</html>

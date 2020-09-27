@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box1 {
+      border: blueviolet 5px solid;
+      /* overflow: hidden; */
+    }
+
+    .left {
+      background: rgb(156, 28, 28);
+      float: left;
+    }
+
+    /* .clearfix {
+      clear: both;
+    } */
+    .clearfix::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    1、css选择器
+      id、class、标签、后代（div p）、子代（div>p）、伪类选择器、伪元素选择器、属性选择器、分组选择器
+    2、css优先级
+      ！important
+      style  1000
+      id     100
+      class，伪类  10
+      标签，伪元素    1
+    3、position:
+      absolute:绝对定位，空间释放，相对于最近一级已定位的祖先元素计算位置
+      relative:相对定位，空间不释放，相对于自己初始位置
+      fixed:固定定位，空间释放，相对于浏览器的可视窗口
+      static:默认定位（不定为的样子）
+      sticky:粘性定位，吸顶效果
+    4、浮动
+      float:left , right
+      浮动元素脱离文档流，空间释放，宽高由内容撑开
+      子元素浮动，父元素高度塌陷
+        1、给父元素加高度
+        2、overflow：hidden；(触发了bfc)
+        3、clearfix
+    5、盒模型(content~padding~border~margin)
+      1、标准盒模型：宽高设置在content区域
+      2、怪异盒模型：宽高设置在border上（box-sizing:border-box;）
+    6、外边距合并
+      1、父元素加上overflow:hidden;
+      2、父元素加上透明边框（但是边框会占据空间）
+      3、父元素或子元素定位或浮动
+    7、BFC（块级格式化上下文）：他是一个独立的渲染区域，区域内的情况与区域外互不干扰，计算bfc高度时，浮动元素也会参与计算
+      触发条件：
+        1、html（根元素自己就是个bfc）
+        2、float属性不为none
+        3、position为absolute或fixed
+        4、display为inline-block，table-cell,table-caption,flex,inline-flex
+        5、overflow不为visible
+   -->
+  <div id="box1" class="clearfix">
+    <div class="left">1111</div>
+    <!-- <div class="clearfix"></div> -->
+  </div>
+</body>
+
+</html>

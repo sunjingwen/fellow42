@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body> 
+  <!-- 
+    1、数据类型
+      基本数据类型: string number boolean null undefined symbol
+      引用数据类型: array object
+    2、判断数组和对象  
+    3、类
+    4、继承
+    5、this
+   -->
+  <ul>
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+  </ul>
+  <script>
+    //  1、数据类型
+    var arr = [1, 2, 3]
+    var obj = {
+      name: 'zs'
+    }
+    console.log(typeof '123'); //string
+    console.log(typeof 123); //number
+    console.log(typeof true); //boolean
+    console.log(typeof null); //object
+    console.log(typeof undefined); //undefined
+    console.log(typeof arr); //object
+    console.log(typeof obj); //object
+
+    // 2、判断数组和对象
+    console.log(Array.isArray(arr)); //true
+    console.log(Array.isArray(obj)); //false
+
+    console.log(arr instanceof Array); //true
+    console.log(obj instanceof Object); //true
+
+    console.log(arr.constructor == Array); //true
+    console.log(obj.constructor == Object); //true
+
+    // 3、类：属性写在构造函数中，方法写到原型里
+    console.clear()
+
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    Person.prototype.say = function (msg) {
+      console.log(this.name + ' say ' + msg);
+    }
+    let p1 = new Person('zs', 70)
+    console.log(p1);
+    p1.say('hello')
+
+    // 4、继承
+    function Coder(name, age) {
+      // 继承属性
+      Person.call(this, name, age)
+    }
+    // 继承方法
+    Coder.prototype = new Person()
+    // 将构造函数指回Coder
+    Coder.prototype.constructor = Coder
+
+    let c1 = new Coder('ls', 26);
+    console.log(c1);
+    c1.say('I like coding!!!')
+    console.log(c1.constructor);
+
+    // 5、this
+    console.clear()
+
+    function fn1(params) {
+      console.log(this); //window
+    }
+    fn1()
+    setTimeout(function () {
+      console.log(this); //window
+    }, 10)
+    var aLi = document.getElementsByTagName('li')
+    for (let i = 0; i < aLi.length; i++) {
+      aLi[i].onclick = function () {
+        console.log(this); //aLi[i]
+        setTimeout(function () {
+          console.log(this); //window
+        }.bind(this), 2000)
+      }
+    }
+    /* 
+      改变this指向
+        call()
+        apply()
+        bind()
+    */
+    // console.clear()
+    let obj1 = {
+      name: 'xiaoming',
+      sleep: function (msg1, msg2) {
+        console.log(this, msg1, msg2);
+      }
+    }
+    let obj2 = {
+      name: 'wangwu'
+    }
+    obj1.sleep('我是obj1', '😁')
+    obj1.sleep.call(obj2, '我是obj2', '😁')
+    obj1.sleep.apply(obj2, ['我是obj2', '😁'])
+    obj1.sleep.bind(obj2, '我是obj2', '😁')()
+  </script>
+</body>
+
+</html>
