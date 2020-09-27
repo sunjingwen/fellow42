@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>先入先出</p>
+  <p>push() , shift()</p>
+  <script>
+    /**
+     * 队首指针  （出）  0            
+     * 队尾指针  （入）  0                  
+     *                ['' , '' , '' ]
+     * 若：队首指针=队尾指针 ，且指针所在位置有元素   =》 队列满了 
+     * 若：队首指针=队尾指针 ，且指针所在位置无元素   =》 队列空了 
+     * 
+     */
+    var MyCircularQueue = function (k) {
+      this.list = new Array(k);
+      this.head = 0; //队首指针
+      this.tail = 0; //队尾指针
+      this.max = k;
+    };
+
+    /**
+     * Insert an element into the circular queue. Return true if the operation is successful. 
+     * @param {number} value
+     * @return {boolean}
+     */
+    MyCircularQueue.prototype.enQueue = function (value) {
+      if (this.isFull()) {
+        return false
+      } else {
+        this.list[this.tail] = value;
+        // this.tail = this.tail < this.max - 1 ? ++this.tail : 0
+        this.tail = (this.tail + 1) % this.max
+        console.log(this.tail, this.list);
+        return true
+      }
+    };
+
+    /**
+     * Delete an element from the circular queue. Return true if the operation is successful.
+     * @return {boolean}
+     */
+    MyCircularQueue.prototype.deQueue = function () {
+      if (this.isEmpty()) {
+        return false
+      } else {
+        this.list[this.head] = null;
+        this.head = (this.head + 1) % this.max
+        return true
+      }
+    };
+
+    /**
+     * Get the front item from the queue.
+     * @return {number}
+     */
+    MyCircularQueue.prototype.Front = function () {
+      if (this.isEmpty()) {
+        return -1
+      } else {
+        return this.list[this.head]
+      }
+    };
+
+    /**
+     * Get the last item from the queue.
+     * @return {number}
+     */
+    MyCircularQueue.prototype.Rear = function () {
+      if (this.isEmpty()) {
+        return -1
+      } else {
+        // return this.list[this.tail]
+        return this.tail - 1 < 0 ? this.list[this.max - 1] : this.list[this.tail - 1]
+      }
+    };
+
+    /**
+     * Checks whether the circular queue is empty or not.
+     * @return {boolean}
+     */
+    MyCircularQueue.prototype.isEmpty = function () {
+      return this.head === this.tail && !this.list[this.head]
+    };
+
+    /**
+     * Checks whether the circular queue is full or not.
+     * @return {boolean}
+     */
+    MyCircularQueue.prototype.isFull = function () {
+      return this.head === this.tail && !!this.list[this.head] //!!把结果转换为布尔型
+    };
+
+    [null, true, true, true, false, 1, true, true, true, 2]
+    [null, true, true, true, false, 3, true, true, true, 4]
+    /**
+     * Your MyCircularQueue object will be instantiated and called as such:
+     * var obj = new MyCircularQueue(k)
+     * var param_1 = obj.enQueue(value)
+     * var param_2 = obj.deQueue()
+     * var param_3 = obj.Front()
+     * var param_4 = obj.Rear()
+     * var param_5 = obj.isEmpty()
+     * var param_6 = obj.isFull()
+     */
+    let circularQueue = new MyCircularQueue(3); // 设置长度为 3
+    circularQueue.enQueue(1); // 返回 true
+    circularQueue.enQueue(2); // 返回 true
+    circularQueue.enQueue(3); // 返回 true
+    circularQueue.enQueue(4); // 返回 false，队列已满
+    circularQueue.Rear(); // 返回 3
+    circularQueue.isFull(); // 返回 true
+    circularQueue.deQueue(); // 返回 true
+    circularQueue.enQueue(4); // 返回 true
+    circularQueue.Rear(); // 返回 4
+  </script>
+</body>
+
+</html>

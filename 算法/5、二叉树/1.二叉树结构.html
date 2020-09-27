@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Node {
+      constructor(val) {
+        this.key = val;
+        this.left = null;
+        this.right = null;
+      }
+    }
+    class BinaryTree {
+      constructor(arr) {
+        this.root = null;
+        arr.forEach(element => {
+          this.inset(element)
+        });
+      }
+      inset(key) {
+        if (!this.root) {
+          this.root = new Node(key)
+        } else {
+          this.insetNode(this.root, key)
+        }
+      }
+      insetNode(node, key) {
+        if (node.key < key) { //放后边
+          if (!node.right) {
+            node.right = new Node(key)
+          } else {
+            this.insetNode(node.right, key)
+          }
+        } else { //放左边
+          if (!node.left) {
+            node.left = new Node(key)
+          } else {
+            this.insetNode(node.left, key)
+          }
+        }
+      }
+      /* 
+      遍历
+         中序遍历(inorder)：先遍历左节点，再遍历自己，最后遍历右节点，输出的刚好是有序的列表
+         前序遍历(preorder)：先自己，再遍历左节点，最后遍历右节点
+         后序遍历(postorder)：先左节点，再右节点，最后自己
+      */
+      inorder() {
+        function fn(node) {
+          if (node.left) {
+            fn(node.left)
+          }
+          console.log(node.key);
+          if (node.right) {
+            fn(node.right)
+          }
+        }
+        fn(this.root)
+      }
+      preorder() {
+        function fn(node) {
+          console.log(node.key);
+          if (node.left) {
+            fn(node.left)
+          }
+          if (node.right) {
+            fn(node.right)
+          }
+        }
+        fn(this.root)
+      }
+      postorder() {
+        function fn(node) {
+          if (node.left) {
+            fn(node.left)
+          }
+          if (node.right) {
+            fn(node.right)
+          }
+          console.log(node.key);
+        }
+        fn(this.root)
+      }
+    }
+    let bt = new BinaryTree([6, 3, 5, 4, 8, 7])
+    console.log(bt);
+    bt.inorder()
+  </script>
+</body>
+
+</html>

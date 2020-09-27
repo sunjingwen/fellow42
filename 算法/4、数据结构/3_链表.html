@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class ListNode {
+      constructor(val) {
+        this.val = val;
+        this.next = null;
+      }
+    }
+    class NodeList {
+      constructor(arr) {
+        this.head = new ListNode(arr[0])
+        let curNode = this.head;
+        for (let i = 1; i < arr.length; i++) {
+          curNode.next = new ListNode(arr[i])
+          curNode = curNode.next;
+        }
+        // 如果构造函数返回的是引用数据类型，则new出来的就是返回值，如果构造函数返回的是基本数据类型，则无影响
+        return this.head
+      }
+    }
+    let nl = new NodeList([5, 3, 2, 6, 1])
+    console.log(nl);
+    // console.log(nl.next);
+    while (nl) {
+      console.log(nl.val);
+      nl = nl.next
+    }
+  </script>
+</body>
+
+</html>

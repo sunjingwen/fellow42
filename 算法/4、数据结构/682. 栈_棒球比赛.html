@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>先入后出</p>
+  <p>push() , pop() </p>
+  <script>
+    var calPoints = function (ops) {
+      let res = [] //有效轮的分数
+      ops.forEach(element => {
+        switch (element) {
+          case 'D':
+            if (res.length > 0) {
+              res.push(res[res.length - 1] * 2)
+            }
+            break;
+          case 'C':
+            if (res.length > 0) {
+              res.pop();
+            }
+            break;
+          case '+':
+            if (res.length > 1) {
+              res.push(res[res.length - 1] + res[res.length - 2])
+            }
+            break;
+          default:
+            res.push(element * 1)
+            break;
+        }
+      });
+      console.log(res);
+      return res.reduce((total, cur) => total + cur)
+    };
+    console.log(calPoints(["5", "-2", "4", "C", "D", "9", "+", "+"]));
+  </script>
+</body>
+
+</html>
