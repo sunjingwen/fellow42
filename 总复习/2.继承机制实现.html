@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* var fn = function () { //new Function();
+            console.log(this.name, this.age);
+        }; */
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            // this.sayHello = fn;
+        }
+        Person.prototype.sayHello = function () { //new Function();
+            console.log(this.name, this.age);
+        };
+        Person.prototype.eat = function () { //new Function();
+           
+        };
+
+
+        /* var p1 = new Person('lisi', 23);
+        console.log(p1.sayHello);
+        var p2 = new Person('wangwu', 12); */
+
+        function Student(name, age, school){
+            Person.call(this, name, age);  //call和apply
+            this.school = school;
+        }
+        /* Student.prototype = new Person();
+        Student.prototype.constructor = Student; */
+        // 寄生组合方式
+        Student.prototype = Object.create(Person.prototype);
+        Student.prototype.constructor = Student;
+
+        var s1 = new Student('zhaoliu', 46, 'heida');
+        // console.log(  s1  );
+        s1.sayHello();
+    </script>
+</body>
+
+</html>
