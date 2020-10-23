@@ -7,6 +7,7 @@ const static = require('koa-static');
 
 const app = new Koa();
 const router = new Router();
+
 // 用来配置ejs文件的加载路径
 app.use(views(path.join(__dirname, './views'), {
   extension: 'ejs' //ejs文件的扩展名，可以是任何有效的扩展名
