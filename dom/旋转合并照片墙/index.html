@@ -121,13 +121,6 @@
                 var isBig = false;
                 var oPrev = document.getElementById('prev');
                 var oNext = document.getElementById('next');
-                var smallImgWidth = smallImgHeight = 125;
-                // 小图片空隙的距离
-                var smallDisX = (oContainer.offsetWidth - 6 * (smallImgWidth + 10)) / 7;
-                var smallDisY = (oContainer.offsetHeight - 4 * (smallImgHeight + 10)) / 5;
-                // 大图片空隙的距离
-                var bigDisX = (oContainer.offsetWidth - 6 * (smallImgWidth + 2)) / 2;
-                var bigDisY = (oContainer.offsetHeight - 4 * (smallImgHeight + 2)) / 2;
 
                 /* 2、创建24个小div装小图片 */
                 for (var i = 0; i < 4; i++) {
@@ -149,30 +142,34 @@
                 }
                 /* 3、计算小div的位置 */
                 var aThumbs = document.getElementsByClassName('thumbs');
-                var aSpan = oContainer.getElementsByTagName('span');
-                setTimeout(function () {
-                    for (var i = 0; i < aThumbs.length; i++) {
-                        aThumbs[i].style.left = (aThumbs[i].col + 1) * smallDisX + aThumbs[i].col * (
-                            smallImgWidth +
-                            10) + 'px'
-                        aThumbs[i].style.top = (aThumbs[i].row + 1) * smallDisY + aThumbs[i].row * (
-                            smallImgHeight +
-                            10) + 'px';
-                        aThumbs[i].style.transform = 'rotate(' + (Math.random() * 40 - 20) + 'deg)';
-                        aThumbs[i].style.transitionDelay = (aThumbs.length - i) * 100 + 'ms';
-                    }
-                }, 100)
+                var smallImgWidth = smallImgHeight = 125;
 
+                // 小图片空隙的距离
+                var smallDisX = (oContainer.offsetWidth - 6 * (smallImgWidth + 10)) / 7;
+                var smallDisY = (oContainer.offsetHeight - 4 * (smallImgHeight + 10)) / 5;
+
+                // 大图片空隙的距离
+                var bigDisX = (oContainer.offsetWidth - 6 * (smallImgWidth + 2)) / 2;
+                var bigDisY = (oContainer.offsetHeight - 4 * (smallImgHeight + 2)) / 2;
+                var aSpan = oContainer.getElementsByTagName('span');
+
+                for (var i = 0; i < aThumbs.length; i++) {
+                    aThumbs[i].style.left = (aThumbs[i].col + 1) * smallDisX + aThumbs[i].col * (smallImgWidth +
+                        10) + 'px';
+                    aThumbs[i].style.top = (aThumbs[i].row + 1) * smallDisY + aThumbs[i].row * (smallImgHeight +
+                        10) + 'px';
+                    aThumbs[i].style.transform = 'rotate(' + (Math.random() * 40 - 20) + 'deg)';
+                    aThumbs[i].style.transitionDelay = (aThumbs.length - i) * 100 + 'ms';
+                }
+                /* 4、单击小div的时候切换图片状态 */
                 function toggle() {
-                    console.log(111);
                     index = this.index;
                     if (isBig) {
                         // 散开
                         for (var i = 0; i < aThumbs.length; i++) {
-                            aThumbs[i].style.left = (aThumbs[i].col + 1) * smallDisX + aThumbs[i].col *
-                                (
-                                    smallImgWidth +
-                                    10) + 'px';
+                            aThumbs[i].style.left = (aThumbs[i].col + 1) * smallDisX + aThumbs[i].col * (
+                                smallImgWidth +
+                                10) + 'px';
                             aThumbs[i].style.top = (aThumbs[i].row + 1) * smallDisY + aThumbs[i].row * (
                                 smallImgHeight +
                                 10) + 'px';
@@ -196,16 +193,13 @@
 
                             aSpan[i].style.display = 'block';
                             // 注意拼字符串不要忘记空格
-                            aSpan[i].style.background = 'url(img/' + index + '.jpg) ' + -aThumbs[i]
-                                .col *
+                            aSpan[i].style.background = 'url(img/' + index + '.jpg) ' + -aThumbs[i].col *
                                 smallImgWidth + 'px ' + -aThumbs[i].row * smallImgHeight + 'px';
                         }
                         isBig = !isBig;
                         oPrev.style.opacity = oNext.style.opacity = 1;
                     }
                 }
-
-                /* 4、单击小div的时候切换图片状态 */
 
                 oPrev.onclick = function () {
                     // index--;
@@ -225,7 +219,6 @@
                         aSpan[i].style.transitionDelay = Math.random() * 500 + 'ms';
                     }
                 }
-
             }
         })();
     </script>
